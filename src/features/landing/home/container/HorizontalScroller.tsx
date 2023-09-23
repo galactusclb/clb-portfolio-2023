@@ -2,9 +2,9 @@ import { FC, useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-interface ScrollerProps {}
+interface HorizontalScrollerProps {}
 
-const Scroller: FC<ScrollerProps> = () => {
+const HorizontalScroller: FC<HorizontalScrollerProps> = () => {
 	const triggerRef = useRef<HTMLDivElement | null>(null);
 	const sectionRef = useRef<HTMLDivElement | null>(null);
 
@@ -68,9 +68,9 @@ const Scroller: FC<ScrollerProps> = () => {
 
 	return (
 		<>
-			<section className="flex w-full overflow-hidden h-screen relative bg-red-400">
+			{/* <section className="flex w-full overflow-hidden h-screen relative bg-red-400">
 				<h1 className="font-extrabold text-8xl">HeaDer</h1>
-			</section>
+			</section> */}
 			<section className="overflow-hidden">
 				<div ref={triggerRef}>
 					<div
@@ -98,11 +98,11 @@ const Scroller: FC<ScrollerProps> = () => {
 					</div>
 				</div>
 			</section>
-			<section className="flex w-full overflow-hidden h-screen relative bg-orange-400">
+			{/* <section className="flex w-full overflow-hidden h-screen relative bg-orange-400">
 				<h1 className="font-extrabold text-8xl">FooTer</h1>
-			</section>
+			</section> */}
 		</>
 	);
 };
 
-export default Scroller;
+export default HorizontalScroller;
