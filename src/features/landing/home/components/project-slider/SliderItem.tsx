@@ -8,7 +8,7 @@ interface SliderItemProps {
 const SliderItem: FC<SliderItemProps> = ({ title, bg }) => {
 	return (
 		<div
-			className={`relative flex items-center justify-center h-full w-[600px] border-s border-red-400 ${bg}`}
+			className={`relative flex items-center justify-center h-full w-screen border-s border-red-400 ${bg}`}
 		>
 			<h1 className="font-semibold text-7xl">{title}</h1>
 		</div>

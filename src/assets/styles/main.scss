@@ -1,2 +1,8 @@
 //vendors
 @import "./vendors/tailwind";
+
+@import "./basic/typography.module.scss";
+
+[data-hidden] {
+	opacity: 0;
+}

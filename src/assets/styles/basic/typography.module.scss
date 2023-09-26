@@ -1,0 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Inter&display=swap");
+
+html {
+	font-size: calc(100vw / 1728 * 10);
+	font-family: "Dela Gothic One", cursive;
+	// font-family: "Inter", sans-serif;
+	font-weight: 400;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
