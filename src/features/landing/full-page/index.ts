@@ -1,5 +1,5 @@
-import HeroSection from "./container/HeroSection";
+import HomePageWrapper from "./container/HomePageWrapper";
 
 export {
-    HeroSection
+    HomePageWrapper
 }
