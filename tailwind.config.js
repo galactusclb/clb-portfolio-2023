@@ -7,6 +7,9 @@ export default {
   ],
   theme: {
     extend: {
+      transformOrigin: {
+        'center-right': 'center right',
+      },
       colors: {
         // border: "hsl(var(--border))",
         // input: "hsl(var(--input))",
