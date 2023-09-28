@@ -6,7 +6,13 @@ import TextBlock from "./TextBlock";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const OverlayTextAnimation: FC = () => {
+interface OverlayTextAnimationProps {
+	disableTextMovingAnimation?: boolean;
+}
+
+const OverlayTextAnimation: FC<OverlayTextAnimationProps> = ({
+	disableTextMovingAnimation = false,
+}) => {
 	const lines: string[] = [
 		"Outdoor Tones is committed to motivating everyone to embrace",
 		"the outdoors. We believe that seeking the thrill of outdoor",
@@ -46,21 +52,25 @@ const OverlayTextAnimation: FC = () => {
 			const overlay = text?.children?.[0];
 			const content = text?.children?.[1];
 
-			setInitialState(text);
+			!disableTextMovingAnimation && setInitialState(text);
 
 			tl.to(overlay, {
 				scaleX: 0,
-			}).to(
-				text,
-				{
-					y: 0,
-					opacity: 1,
-					ease: "expo-out",
-					// duration: 2,
-					delay: () => index * 0.1,
-				},
-				0
-			);
+			});
+
+			if (!disableTextMovingAnimation) {
+				tl.to(
+					text,
+					{
+						y: 0,
+						opacity: 1,
+						ease: "expo-out",
+						// duration: 2,
+						delay: () => index * 0.1,
+					},
+					0
+				);
+			}
 		});
 	}
 
