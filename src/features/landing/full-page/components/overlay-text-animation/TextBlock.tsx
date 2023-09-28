@@ -31,7 +31,9 @@ const TextBlock = forwardRef<HTMLDivElement, TextBlockProps>(
 		return (
 			<div ref={text__effectRef} className="relative text__effect">
 				<div className="text__overlay block absolute h-[101%] w-full top-0 left-0 bg-white opacity-70 origin-center-right"></div>
-				<p className="text-5xl leading-relaxed">{title}</p>
+				<p className="text-6xl leading-relaxed font-[Inter] font-medium">
+					{title}
+				</p>
 			</div>
 		);
 	}
