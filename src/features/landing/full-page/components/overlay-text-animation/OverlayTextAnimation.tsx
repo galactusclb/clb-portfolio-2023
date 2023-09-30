@@ -38,10 +38,10 @@ const OverlayTextAnimation: FC<OverlayTextAnimationProps> = ({
 		const tl = gsap.timeline({
 			scrollTrigger: {
 				trigger: textBlockRef.current,
-				start: "tot 40%",
+				start: "top 30%",
 				// end: "bottom 40%",
 				// end: "bottom top+100",
-				end: "+=2500",
+				end: "+=1500",
 				scrub: 2,
 				pin: true,
 				markers: true,
@@ -90,7 +90,7 @@ const OverlayTextAnimation: FC<OverlayTextAnimationProps> = ({
 	return (
 		<section
 			ref={textBlockRef}
-			className="flex items-center text-block px-28 my-96"
+			className="flex items-center text-block px-28 mb-96"
 		>
 			<div className="">
 				{lines?.map((line, key) => {
