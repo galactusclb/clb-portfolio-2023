@@ -90,7 +90,7 @@ const OverlayTextAnimation: FC<OverlayTextAnimationProps> = ({
 	return (
 		<section
 			ref={textBlockRef}
-			className="flex items-center text-block px-28 mb-96"
+			className="flex items-center mt-36 text-block px-28 mb-96"
 		>
 			<div className="">
 				{lines?.map((line, key) => {

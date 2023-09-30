@@ -67,11 +67,11 @@ const LandingLayout: FC<LandingLayoutProps> = () => {
 
 	// return <HomeContainer />;
 	return (
-		<div className={`${style["main-wrapper"]}`}>
-			<div ref={scrollContainerRef}>
-				<HomePageWrapper />
-			</div>
-		</div>
+		// <div className={`${style["main-wrapper"]}`}>
+		// 	<div ref={scrollContainerRef}>
+		<HomePageWrapper />
+		// 	</div>
+		// </div>
 	);
 };
 
