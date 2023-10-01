@@ -11,6 +11,7 @@ const InfiniteTextSection: FC = () => {
 				animationDuration={10}
 				className="text-8xl"
 				spaceBetweenSentence="pl-[56px]"
+				disablePauseOnHover={true}
 			/>
 			{/* </div> */}
 		</div>

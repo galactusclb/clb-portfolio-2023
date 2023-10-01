@@ -7,6 +7,7 @@ export interface SentenceProps {
 	animationDuration?: number;
 	animationDelay?: number;
 	spaceBetweenSentence?: string;
+	disablePauseOnHover?: boolean;
 }
 
 const Sentence: FC<SentenceProps> = ({
@@ -14,10 +15,15 @@ const Sentence: FC<SentenceProps> = ({
 	spaceBetweenSentence,
 	animationDelay,
 	animationDuration,
+	disablePauseOnHover,
 }) => {
 	return (
 		<span
-			className={cn(` group-hover:pause animate-loopL`, spaceBetweenSentence)}
+			className={cn(
+				`animate-loopL`,
+				spaceBetweenSentence,
+				!disablePauseOnHover && "group-hover:pause"
+			)}
 			style={{
 				animationDuration: `${animationDuration}s`,
 				animationDelay: `${animationDelay}s`,

@@ -25,6 +25,7 @@ const OverlayTextAnimation: FC<OverlayTextAnimationProps> = ({
 	const revealPRefs = useRef<HTMLDivElement[]>([]);
 
 	useLayoutEffect(() => {
+		ScrollTrigger.refresh();
 		const ctx = gsap.context(() => {
 			createTextAnimation();
 		});

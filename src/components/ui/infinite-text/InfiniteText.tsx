@@ -12,6 +12,7 @@ const InfiniteText: FC<InfiniteTextProps> = ({
 	animationDelay = 0,
 	animationDuration = 4,
 	spaceBetweenSentence = "pl-10",
+	disablePauseOnHover,
 	className,
 }) => {
 	return (
@@ -26,12 +27,14 @@ const InfiniteText: FC<InfiniteTextProps> = ({
 				animationDelay={animationDelay}
 				animationDuration={animationDuration}
 				spaceBetweenSentence={spaceBetweenSentence}
+				disablePauseOnHover={disablePauseOnHover}
 			/>
 			<Sentence
 				sentence={sentence}
 				animationDelay={animationDelay}
 				animationDuration={animationDuration}
 				spaceBetweenSentence={spaceBetweenSentence}
+				disablePauseOnHover={disablePauseOnHover}
 			/>
 		</div>
 	);
