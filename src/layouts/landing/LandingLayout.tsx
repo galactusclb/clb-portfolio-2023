@@ -5,6 +5,7 @@ import Lenis from "@studio-freight/lenis";
 import { HomePageWrapper } from "features/landing/full-page";
 
 import style from "@styles/layouts/landing-layout.module.scss";
+import { HomePageContextProvider } from "./context/HomeWrapperProvider";
 
 interface LandingLayoutProps {}
 
@@ -69,7 +70,9 @@ const LandingLayout: FC<LandingLayoutProps> = () => {
 	return (
 		// <div className={`${style["main-wrapper"]}`}>
 		// 	<div ref={scrollContainerRef}>
-		<HomePageWrapper />
+		<HomePageContextProvider>
+			<HomePageWrapper />
+		</HomePageContextProvider>
 		// 	</div>
 		// </div>
 	);

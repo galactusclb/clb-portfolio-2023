@@ -30,8 +30,9 @@ const HorizontalScrollingSection: FC = () => {
 					trigger: mainSliderRef.current,
 					pin: true,
 					start: "top top",
-					end: "+=400%",
+					end: "+=800%",
 					scrub: 1,
+					markers: true,
 				},
 			});
 
@@ -74,7 +75,7 @@ const HorizontalScrollingSection: FC = () => {
 			<div
 				ref={sliderRef}
 				id="slider-container"
-				className="absolute flex items-center h-screen w-fit min-w-full"
+				className="absolute flex items-center h-screen w-fit min-w-full snap-x"
 			>
 				{/* <div
 					ref={addRef}
