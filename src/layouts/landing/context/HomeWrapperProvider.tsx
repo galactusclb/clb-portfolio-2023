@@ -1,9 +1,16 @@
-import { ReactNode, createContext, useContext, useState } from "react";
+import {
+	ReactNode,
+	createContext,
+	useCallback,
+	useContext,
+	useState,
+} from "react";
 
 interface ContextType {
 	// Define the shape of your context here
 	isPreloaderEnabled: boolean;
-	setPreloaderEnabled: React.Dispatch<React.SetStateAction<boolean>>;
+	// setPreloaderEnabled: React.Dispatch<React.SetStateAction<boolean>>;
+	setPreloaderEnabled: (state: boolean) => void;
 }
 
 interface HomePageContextProviderProps {
@@ -25,7 +32,11 @@ export const useHomePageContext = () => {
 export const HomePageContextProvider = ({
 	children,
 }: HomePageContextProviderProps) => {
-	const [isPreloaderEnabled, setPreloaderEnabled] = useState<boolean>(true);
+	const [isPreloaderEnabled, setIsPreloaderEnabled] = useState<boolean>(true);
+
+	const setPreloaderEnabled = useCallback((value: boolean) => {
+		setIsPreloaderEnabled(value);
+	}, []);
 
 	const data: ContextType = {
 		isPreloaderEnabled,

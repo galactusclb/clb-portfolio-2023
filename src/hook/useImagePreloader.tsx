@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
+import axios from "axios";
 
 type TImagePreloader = {
 	images: string[];
-	onLoadFinish: () => void;
+	onLoadFinish?: () => void;
 };
 
 const useImagePreloader = ({ images, onLoadFinish }: TImagePreloader) => {
@@ -12,34 +13,77 @@ const useImagePreloader = ({ images, onLoadFinish }: TImagePreloader) => {
 	// ]);
 
 	const [loadedImages, setLoadedImages] = useState<string[]>([]);
+	const [progress, setProgress] = useState<number[]>(
+		new Array(images.length).fill(0)
+	);
+	const [totalProgress, setTotalProgress] = useState(0);
+
+	// useEffect(() => {
+	// 	images.forEach((image) => {
+	// 		const img = new Image();
+	// 		img.src = image;
+	// 		console.log(img);
+
+	// 		img.onload = () => {
+	// 			setLoadedImages((prev) => [...prev, image]);
+	// 		};
+	// 	});
+	// }, [images]);
+
+	// useEffect(() => {
+	// 	console.log(loadedImages.length, images.length);
+
+	// 	if (loadedImages.length >= images.length) {
+	// 		// setIsLoading(false);
+	// 		// setPreloaderEnabled(false);
+	// 		onLoadFinish();
+	// 	}
+	// }, [loadedImages, images, onLoadFinish]);
+
+	useEffect(() => {
+		const loadImages = images.map((image, index) =>
+			axios.get(image, {
+				responseType: "blob",
+				onDownloadProgress: (progressEvent) => {
+					if (progressEvent.total) {
+						const percentCompleted = Math.round(
+							(progressEvent.loaded * 100) / progressEvent.total
+						);
+						setProgress((oldProgress) => {
+							const newProgress = [...oldProgress];
+							newProgress[index] = percentCompleted;
+							return newProgress;
+						});
+					}
+				},
+			})
+		);
+
+		Promise.all(loadImages).then((responses) => {
+			const loaded = responses.map((response) => {
+				const blob = new Blob([response.data], { type: response.data.type });
+				return URL.createObjectURL(blob);
+			});
+			setLoadedImages(loaded);
+			onLoadFinish?.();
+		});
+	}, [images, onLoadFinish]);
 
 	useEffect(() => {
 		console.log(images);
 	}, [images]);
 
 	useEffect(() => {
-		images.forEach((image) => {
-			const img = new Image();
-			img.src = image;
-			console.log(img);
-
-			img.onload = () => {
-				setLoadedImages((prev) => [...prev, image]);
-			};
-		});
-	}, [images]);
+		console.log(onLoadFinish);
+	}, [onLoadFinish]);
 
 	useEffect(() => {
-		console.log(loadedImages.length, images.length);
+		const total = progress.reduce((a, b) => a + b, 0);
+		setTotalProgress(total / images.length);
+		console.log(total);
+	}, [progress, images.length]);
 
-		if (loadedImages.length >= images.length) {
-			// setIsLoading(false);
-			// setPreloaderEnabled(false);
-			onLoadFinish();
-		}
-	}, [loadedImages, images, onLoadFinish]);
-
-	return { loadedImages };
+	return { loadedImages, progress, totalProgress };
 };
 
 export default useImagePreloader;
