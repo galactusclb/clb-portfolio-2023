@@ -17,28 +17,28 @@ const FullImagePinndSection: FC<FullImagePinndSectionProps> = () => {
 	// const imageRef = useRef<HTMLImageElement | null>(null);
 
 	useLayoutEffect(() => {
+		function setInitialState() {
+			gsap.set(wrapperRef.current, {
+				clipPath,
+			});
+
+			gsap.set(" img", {
+				scale: 1.3,
+			});
+
+			gsap.set(" .fullwidth-image__text", {
+				y: 32,
+				opacity: 0,
+			});
+		}
+
 		const ctx = gsap.context(() => {
 			setInitialState();
 			createPinnedHero();
 		}, wrapperRef);
 
 		return () => ctx.revert();
-	}, []);
-
-	function setInitialState() {
-		gsap.set(wrapperRef.current, {
-			clipPath,
-		});
-
-		gsap.set(" img", {
-			scale: 1.3,
-		});
-
-		gsap.set(" .fullwidth-image__text", {
-			y: 32,
-			opacity: 0,
-		});
-	}
+	}, [clipPath]);
 
 	function createPinnedHero() {
 		const tl = gsap.timeline({
@@ -85,7 +85,7 @@ const FullImagePinndSection: FC<FullImagePinndSectionProps> = () => {
 	return (
 		<div
 			ref={wrapperRef}
-			className={`relative h-screen overflow-hidden bg-red-200 fullwidth-image`}
+			className={`relative h-screen overflow-hidden max-w-[100vw] bg-red-200 fullwidth-image`}
 			style={{ clipPath }}
 		>
 			<div className="fullwidth-image__overlay absolute inset-0 z-[2] bg-slate-900 opacity-0"></div>
