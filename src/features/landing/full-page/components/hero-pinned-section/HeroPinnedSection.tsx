@@ -46,6 +46,7 @@ const HeroPinnedSection: FC = () => {
 
 		tl.to(" .hero__title div", {
 			opacity: 1,
+			delay: 0.5,
 		})
 			.to(" .hero__title span", {
 				opacity: 1,
@@ -63,7 +64,7 @@ const HeroPinnedSection: FC = () => {
 					duration: 2,
 					stagger: 0.05,
 				},
-				2
+				2.5
 			);
 	}
 

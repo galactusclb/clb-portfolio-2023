@@ -1,5 +1,6 @@
-import { FC, ReactNode } from "react";
+import { FC, ReactNode, useState } from "react";
 import { useSelector } from "react-redux";
+import { AnimatePresence } from "framer-motion";
 
 import { RootState } from "store";
 
@@ -15,16 +16,25 @@ const PageLayout: FC<PageLayoutProps> = ({ children }) => {
 		(state: RootState) => state.appLoadingConfig
 	);
 
+	// const [isLoading, setIsLoading] = useState(true);
+
+	// setTimeout(() => {
+	// 	setIsLoading(false);
+	// 	document.body.style.cursor = "default";
+	// 	window.scrollTo(0, 0);
+	// }, 3000);
+
 	return (
 		<div className="relative w-screen h-screen max-w-[100vw]">
-			{!isProloadingFinished ? (
-				<>
-					<SectionPreloader />
-					<HeroImage />
-				</>
-			) : (
-				children
-			)}
+			<AnimatePresence mode="wait">
+				{!isProloadingFinished ? (
+					<>
+						<SectionPreloader />
+						<HeroImage />
+					</>
+				) : null}
+			</AnimatePresence>
+			{isProloadingFinished ? children : null}
 		</div>
 	);
 };
