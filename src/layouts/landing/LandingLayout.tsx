@@ -21,29 +21,29 @@ const LandingLayout: FC<LandingLayoutProps> = () => {
 
 	const SKEW_AMOUNT = 10; // Adjust this value to change the amount of skew
 
-	useEffect(() => {
-		const lenis = new Lenis({
-			lerp: 0.1,
-		});
+	// useEffect(() => {
+	// 	const lenis = new Lenis({
+	// 		lerp: 0.1,
+	// 	});
 
-		// lenis.on("scroll", (e) => {
-		// 	console.log(e);
+	// 	// lenis.on("scroll", (e) => {
+	// 	// 	console.log(e);
 
-		// 	addScrewScrollEffect(e);
-		// });
+	// 	// 	addScrewScrollEffect(e);
+	// 	// });
 
-		function raf(time?: number) {
-			lenis.raf(time);
-			requestAnimationFrame(raf);
-		}
+	// 	function raf(time?: number) {
+	// 		lenis.raf(time);
+	// 		requestAnimationFrame(raf);
+	// 	}
 
-		requestAnimationFrame(raf);
+	// 	requestAnimationFrame(raf);
 
-		return () => {
-			lenis.destroy();
-			// cancelAnimationFrame(raf);
-		};
-	}, []);
+	// 	return () => {
+	// 		lenis.destroy();
+	// 		// cancelAnimationFrame(raf);
+	// 	};
+	// }, []);
 
 	function addScrewScrollEffect(e) {
 		// skewConfigs.current.current = e?.scroll?.y;

@@ -98,7 +98,7 @@ const useImagePreloader = ({ images, onLoadFinish }: TImagePreloader) => {
 	const [progress, setProgress] = useState<number[]>(
 		new Array(images.length).fill(0)
 	);
-	const [totalProgress, setTotalProgress] = useState(0);
+	const [totalProgress, setTotalProgress] = useState<number | string>(0);
 
 	const { data: loadedImages, isFetching } = useQuery({
 		queryKey: ["images"],
@@ -139,7 +139,8 @@ const useImagePreloader = ({ images, onLoadFinish }: TImagePreloader) => {
 
 	useEffect(() => {
 		const total = progress.reduce((a, b) => a + b, 0);
-		setTotalProgress(total / images.length);
+		const currentProgress: string = (total / images.length).toFixed();
+		setTotalProgress(currentProgress);
 	}, [progress, images.length]);
 
 	return { loadedImages, progress, totalProgress };

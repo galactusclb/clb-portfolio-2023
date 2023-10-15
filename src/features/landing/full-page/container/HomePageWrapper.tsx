@@ -13,7 +13,7 @@ const HomePageWrapper: FC = () => {
 	return (
 		<>
 			<PageLayout>
-				<HeroPinnedSection />
+				<HeroPinnedSection key={Date.now()} />
 				<InfiniteTextSection />
 				<HorizontalScrollingSection />
 				<OverlayTextAnimation disableTextMovingAnimation={false} />

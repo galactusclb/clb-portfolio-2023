@@ -17,6 +17,8 @@ const FullImagePinndSection: FC<FullImagePinndSectionProps> = () => {
 	// const imageRef = useRef<HTMLImageElement | null>(null);
 
 	useLayoutEffect(() => {
+		ScrollTrigger.refresh();
+
 		function setInitialState() {
 			gsap.set(wrapperRef.current, {
 				clipPath,

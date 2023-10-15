@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export interface appLoadingConfigState {
-    preloadImageProgress?: number;
+    preloadImageProgress?: number | string;
     isProloadingFinished?: boolean
 }
 
@@ -14,10 +14,10 @@ const appLoadingConfigSlice = createSlice({
     name: "appLoadingConfig",
     initialState,
     reducers: {
-        setLoadingProgress(state, action: PayloadAction<number>) {
+        setLoadingProgress(state, action: PayloadAction<number | string>) {
             console.log(action.payload);
 
-            state.preloadImageProgress = Number(action.payload)
+            state.preloadImageProgress = action.payload
         },
         setPreloadingFinishStatus(state, action: PayloadAction<boolean>) {
             console.log(action.payload);

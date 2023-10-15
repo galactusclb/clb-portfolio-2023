@@ -4,10 +4,13 @@ import { motion } from "framer-motion";
 
 import { RootState } from "store";
 import { opacity, slideUp } from "./anim";
+import useCachingImages from "hook/useCachingImages";
 
 interface SectionPreloaderProps {}
 
 const SectionPreloader: FC<SectionPreloaderProps> = () => {
+	useCachingImages();
+
 	const appLoadingConfig = useSelector(
 		(state: RootState) => state.appLoadingConfig
 	);
@@ -62,13 +65,13 @@ const SectionPreloader: FC<SectionPreloaderProps> = () => {
 					>
 						Pre loader {preloadImageProgress}%
 					</motion.h1>
-					<svg>
+					{/* <svg>
 						<motion.path
 							variants={curve}
 							initial="initial"
 							exit="exit"
 						></motion.path>
-					</svg>
+					</svg> */}
 				</>
 			)}
 		</motion.section>

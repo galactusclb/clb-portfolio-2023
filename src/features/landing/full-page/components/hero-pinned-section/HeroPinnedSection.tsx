@@ -10,6 +10,20 @@ import Photo5 from "@images/Photo5.jpg";
 import Photo6 from "@images/Photo6.jpg";
 import Photo7 from "@images/Photo7.jpg";
 
+// import Photo1 from "@images/Photo1.jpg";
+// const Photo2 =
+// 	"https://images.unsplash.com/photo-1697122264730-aee187973194?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80";
+// const Photo3 =
+// 	"https://images.unsplash.com/photo-1684252408280-737200626f2c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1888&q=80";
+// const Photo4 =
+// 	"https://images.unsplash.com/photo-1682686578842-00ba49b0a71a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1975&q=80";
+// const Photo5 =
+// 	"https://images.unsplash.com/photo-1695848548758-3ee40e6cd9ed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80";
+// const Photo6 =
+// 	"https://images.unsplash.com/photo-1682685796852-aa311b46f50d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80";
+// const Photo7 =
+// 	"https://plus.unsplash.com/premium_photo-1695680239312-71b1a1670573?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1854&q=80";
+
 gsap.registerPlugin(ScrollTrigger);
 
 const HeroPinnedSection: FC = () => {
@@ -24,10 +38,25 @@ const HeroPinnedSection: FC = () => {
 			createHeroParallaxScroll();
 		}, heroRef);
 
+		ScrollTrigger.refresh();
+
 		return () => {
 			ctx.revert();
 		};
 	}, []);
+
+	// useEffect(() => {
+	// 	// console.log(heroRef.current);
+	// 	ScrollTrigger.refresh();
+
+	// 	// const timeout = setTimeout(() => {
+	// 	createHeroParallaxScroll();
+	// 	// }, 0);
+
+	// 	// return () => {
+	// 	// 	clearTimeout(timeout);
+	// 	// };
+	// }, [heroRef]);
 
 	function setInitialState() {
 		gsap.set(" .hero__title span", {
