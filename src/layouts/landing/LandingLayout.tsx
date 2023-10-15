@@ -1,27 +1,20 @@
-import { FC, useEffect, useRef } from "react";
 import Lenis from "@studio-freight/lenis";
+import { FC, useEffect, useLayoutEffect } from "react";
 
-// import { HomeContainer } from "features/landing/home";
+import { useWindowSize } from "hook";
+
 import { HomePageWrapper } from "features/landing/full-page";
 
-import style from "@styles/layouts/landing-layout.module.scss";
 import { HomePageContextProvider } from "./context/HomeWrapperProvider";
 
 interface LandingLayoutProps {}
 
 const LandingLayout: FC<LandingLayoutProps> = () => {
-	const scrollContainerRef = useRef<HTMLDivElement>(null);
+	// const [width, height] = useWindowSize();
 
-	const skewConfigs = useRef({
-		ease: 0.1,
-		current: 0,
-		previous: 0,
-		rounded: 0,
-	});
+	// useLayoutEffect(() => {
+	// 	console.log(height);
 
-	const SKEW_AMOUNT = 10; // Adjust this value to change the amount of skew
-
-	// useEffect(() => {
 	// 	const lenis = new Lenis({
 	// 		lerp: 0.1,
 	// 	});
@@ -43,38 +36,12 @@ const LandingLayout: FC<LandingLayoutProps> = () => {
 	// 		lenis.destroy();
 	// 		// cancelAnimationFrame(raf);
 	// 	};
-	// }, []);
+	// }, [height]);
 
-	function addScrewScrollEffect(e) {
-		// skewConfigs.current.current = e?.scroll?.y;
-		// skewConfigs.current.current = e?.targetScroll;
-		skewConfigs.current.current = window.scrollY;
-		skewConfigs.current.previous +=
-			(skewConfigs.current.current - skewConfigs.current.previous) *
-			skewConfigs.current.ease;
-		skewConfigs.current.rounded =
-			Math.round(skewConfigs.current.previous * 100) / 100;
-
-		const difference =
-			skewConfigs.current.current - skewConfigs.current.rounded;
-		const acceleration = difference / window.innerWidth;
-		const velocity = +acceleration;
-		const skew = velocity * SKEW_AMOUNT;
-
-		if (scrollContainerRef.current) {
-			scrollContainerRef.current.style.transform = `translate3d(0, -${skewConfigs.current.rounded}px, 0) skewY(${skew}deg)`;
-		}
-	}
-
-	// return <HomeContainer />;
 	return (
-		// <div className={`${style["main-wrapper"]}`}>
-		// 	<div ref={scrollContainerRef}>
 		<HomePageContextProvider>
 			<HomePageWrapper />
 		</HomePageContextProvider>
-		// 	</div>
-		// </div>
 	);
 };
 

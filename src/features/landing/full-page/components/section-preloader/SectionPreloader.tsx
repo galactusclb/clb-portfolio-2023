@@ -53,7 +53,7 @@ const SectionPreloader: FC<SectionPreloaderProps> = () => {
 			variants={slideUp}
 			initial="initial"
 			exit="exit"
-			className="absolute inset-0 z-50 flex items-center justify-center w-screen h-screen bg-red-300"
+			className="fixed inset-0 z-50 flex items-center justify-center w-screen h-screen bg-slate-900"
 		>
 			{dimension.width > 0 && (
 				<>
@@ -61,17 +61,20 @@ const SectionPreloader: FC<SectionPreloaderProps> = () => {
 						variants={opacity}
 						initial="initial"
 						animate="enter"
-						className="text-9xl"
+						className="text-9xl text-white z-[1]"
 					>
 						Pre loader {preloadImageProgress}%
 					</motion.h1>
-					{/* <svg>
+					<svg
+						className="absolute top-0 w-full"
+						style={{ height: "calc(100% + 300px)" }}
+					>
 						<motion.path
 							variants={curve}
 							initial="initial"
 							exit="exit"
 						></motion.path>
-					</svg> */}
+					</svg>
 				</>
 			)}
 		</motion.section>

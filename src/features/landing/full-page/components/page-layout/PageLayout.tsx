@@ -13,35 +13,35 @@ interface PageLayoutProps {
 }
 
 const PageLayout: FC<PageLayoutProps> = ({ children }) => {
-	// const { isProloadingFinished } = useSelector(
-	// 	(state: RootState) => state.appLoadingConfig
-	// );
+	const { isProloadingFinished } = useSelector(
+		(state: RootState) => state.appLoadingConfig
+	);
 
-	const [isLoading, setIsLoading] = useState(true);
-
-	setTimeout(() => {
-		setIsLoading(false);
-		document.body.style.cursor = "default";
-		// window.scrollTo(0, 0);
-	}, 3000);
+	// const [isLoading, setIsLoading] = useState(true);
 
 	// useEffect(() => {
-	// 	console.log(isProloadingFinished);
-	// 	// if (isProloadingFinished) {
-	// 	// 	alert("gd");
-	// 	// }
-	// }, [isProloadingFinished]);
+	// 	const timeout = setTimeout(() => {
+	// 		setIsLoading(false);
+	// 		document.body.style.cursor = "default";
+	// 		// window.dispatchEvent(new Event("resize"));
+	// 		// window.scrollTo(0, 0);
+	// 	}, 3000);
+
+	// 	return () => {
+	// 		clearTimeout(timeout);
+	// 	};
+	// }, []);
 
 	return (
 		<div className="relative w-screen h-screen max-w-[100vw]">
 			<AnimatePresence mode="wait">
-				{isLoading ? (
+				{!isProloadingFinished ? (
 					// <>
 					<SectionPreloader />
 				) : // 	<HeroImage />
 				null}
 			</AnimatePresence>
-			{!isLoading ? children : null}
+			{isProloadingFinished ? children : null}
 		</div>
 	);
 };
