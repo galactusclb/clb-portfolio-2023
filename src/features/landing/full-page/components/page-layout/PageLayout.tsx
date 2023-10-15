@@ -42,6 +42,7 @@ const PageLayout: FC<PageLayoutProps> = ({ children }) => {
 				null}
 			</AnimatePresence>
 			{isProloadingFinished ? children : null}
+			{/* {children} */}
 		</div>
 	);
 };
