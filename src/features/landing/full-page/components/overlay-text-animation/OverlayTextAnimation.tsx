@@ -45,7 +45,7 @@ const OverlayTextAnimation: FC<OverlayTextAnimationProps> = ({
 				end: "+=1500",
 				scrub: 2,
 				pin: true,
-				markers: true,
+				// markers: true,
 			},
 		});
 

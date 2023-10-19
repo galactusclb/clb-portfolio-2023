@@ -22,14 +22,14 @@ const PageLayout: FC<PageLayoutProps> = ({ children }) => {
 	// useEffect(() => {
 	// 	const timeout = setTimeout(() => {
 	// 		setIsLoading(false);
-	// 		document.body.style.cursor = "default";
-	// 		// window.dispatchEvent(new Event("resize"));
+	// 		document.body.style.cursor = "progress";
 	// 		// window.scrollTo(0, 0);
-	// 	}, 3000);
+	// 	}, 3500);
 
 	// 	return () => {
 	// 		clearTimeout(timeout);
 	// 	};
+	// 	// }, [isProloadingFinished]);
 	// }, []);
 
 	return (
@@ -42,7 +42,6 @@ const PageLayout: FC<PageLayoutProps> = ({ children }) => {
 				null}
 			</AnimatePresence>
 			{isProloadingFinished ? children : null}
-			{/* {children} */}
 		</div>
 	);
 };

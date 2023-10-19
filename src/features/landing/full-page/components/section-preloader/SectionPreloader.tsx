@@ -11,6 +11,8 @@ interface SectionPreloaderProps {}
 const SectionPreloader: FC<SectionPreloaderProps> = () => {
 	useCachingImages();
 
+	const CURVE_HEIGHT = 300;
+
 	const appLoadingConfig = useSelector(
 		(state: RootState) => state.appLoadingConfig
 	);
@@ -21,7 +23,7 @@ const SectionPreloader: FC<SectionPreloaderProps> = () => {
 
 	const initialPath = `M0 0 L${dimension.width} 0 L${dimension.width} ${
 		dimension.height
-	} Q${dimension.width / 2} ${dimension.height + 300} 0 ${
+	} Q${dimension.width / 2} ${dimension.height + CURVE_HEIGHT} 0 ${
 		dimension.height
 	}  L0 0`;
 
@@ -67,7 +69,7 @@ const SectionPreloader: FC<SectionPreloaderProps> = () => {
 					</motion.h1>
 					<svg
 						className="absolute top-0 w-full"
-						style={{ height: "calc(100% + 300px)" }}
+						style={{ height: `calc(100% + ${CURVE_HEIGHT}px)` }}
 					>
 						<motion.path
 							variants={curve}

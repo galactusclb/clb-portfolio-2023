@@ -1,14 +1,63 @@
-import { FC, useLayoutEffect, useRef } from "react";
+import { FC, useEffect, useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ScrollingItem from "./ScrollingItem";
+
+import Photo1 from "@images/Photo1.jpg";
+import Photo2 from "@images/Photo2.jpg";
+import Photo3 from "@images/Photo3.jpg";
+import Photo4 from "@images/Photo4.jpg";
+import Photo5 from "@images/Photo5.jpg";
+import Photo6 from "@images/Photo6.jpg";
+import Photo7 from "@images/Photo7.jpg";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const HorizontalScrollingSection: FC = () => {
 	const mainSliderRef = useRef(null);
-	const sliderRef = useRef(null);
+	const sliderRef = useRef<HTMLDivElement>(null);
 	const slideItemRefs = useRef<HTMLElement[]>([]);
+
+	const [items, setItems] = useState([
+		{
+			name: "John Doe",
+			role: "Designer",
+			image: Photo1,
+		},
+		{
+			name: "John Doe",
+			role: "Designer",
+			image: Photo2,
+		},
+		{
+			name: "John Doe",
+			role: "Designer",
+			image: Photo3,
+		},
+		{
+			name: "John Doe",
+			role: "Designer",
+			image: Photo4,
+		},
+		{
+			name: "John Doe",
+			role: "Designer",
+			image: Photo5,
+		},
+		{
+			name: "John Doe",
+			role: "Designer",
+			image: Photo6,
+		},
+		{
+			name: "John Doe",
+			role: "Designer",
+			image: Photo7,
+		},
+	]);
+
+	const tl = useRef<gsap.core.Timeline | null>(null);
+	const [timeline, setTimeline] = useState<gsap.core.Timeline | null>(null);
 
 	useLayoutEffect(() => {
 		function createAnimation() {
@@ -22,7 +71,7 @@ const HorizontalScrollingSection: FC = () => {
 			// const calculateSliderX = totalWidth - windowWith;
 			// console.log(calculateSliderX, windowWith, totalWidth);
 
-			const tl = gsap.timeline({
+			tl.current = gsap.timeline({
 				defaults: {
 					ease: "none",
 				},
@@ -30,13 +79,13 @@ const HorizontalScrollingSection: FC = () => {
 					trigger: mainSliderRef.current,
 					pin: true,
 					start: "top top",
-					end: "+=800%",
+					end: "+=400%",
 					scrub: 1,
-					markers: true,
+					// markers: true,
 				},
 			});
 
-			tl.to(sliderRef.current, {
+			tl.current.to(sliderRef.current, {
 				// x: -calculateSliderX,
 				x: () => -getCalculatedWidth(),
 			});
@@ -46,16 +95,29 @@ const HorizontalScrollingSection: FC = () => {
 
 		const ctx = gsap.context(() => {
 			createAnimation();
+			console.log(tl.current);
+
+			setTimeline(tl.current);
 		}, mainSliderRef);
 
 		return () => ctx.revert();
-	}, []);
+	}, [items]);
 
 	const getCalculatedWidth = () => {
 		const windowWith = window.innerWidth;
-		const totalWidth =
-			slideItemRefs.current?.[0]?.offsetWidth * slideItemRefs.current?.length;
+
+		//? get scrolling total using children width
+		// const totalWidth =
+		// 	slideItemRefs.current?.[0]?.offsetWidth * slideItemRefs.current?.length;
+
+		//? get scrolling total using wrapper children width (otherwise gap is between children not calculated)
+		const wrapperWidth = sliderRef.current?.offsetWidth ?? 0;
+		const mainWrapperLeftPadding = 200;
+
+		const totalWidth = wrapperWidth + mainWrapperLeftPadding + 500;
+
 		const calculateSliderX = totalWidth - windowWith;
+		console.log(totalWidth, windowWith, calculateSliderX);
 
 		return calculateSliderX;
 	};
@@ -70,24 +132,24 @@ const HorizontalScrollingSection: FC = () => {
 		<section
 			ref={mainSliderRef}
 			id="main-slider-container"
-			className="flex w-full h-screen relative overflow-hidden mt-56"
+			className="flex w-full h-screen relative overflow-hidden mt-56 bg-slate-900 pt-24 ps-32"
 		>
+			<h3 className="text-white text-9xl z-10">MEET THE TEAM</h3>
 			<div
 				ref={sliderRef}
 				id="slider-container"
-				className="absolute flex items-center h-screen w-fit min-w-full snap-x"
+				className="absolute flex items-cente gap-24 bottom-24 w-fit min-w-full snap-x ms-96"
 			>
-				{/* <div
-					ref={addRef}
-					className="w-screen min-w-[100vw] h-full relative flex items-center justify-center text-yellow-400 text-9xl border border-slate-200"
-				>
-					0
-				</div> */}
-				<ScrollingItem title="1" ref={addRef} />
-				<ScrollingItem title="2" ref={addRef} />
-				<ScrollingItem title="3" ref={addRef} />
-				<ScrollingItem title="4" ref={addRef} />
-				<ScrollingItem title="5" ref={addRef} />
+				{items?.map((item, index) => {
+					return (
+						<ScrollingItem
+							key={index}
+							member={item}
+							ref={addRef}
+							timeline={timeline}
+						/>
+					);
+				})}
 			</div>
 		</section>
 	);
