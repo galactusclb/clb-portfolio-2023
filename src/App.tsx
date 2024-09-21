@@ -5,8 +5,9 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import AdminLayout from "./layouts/admin-layout/AdminLayout";
 import LandingLayout from "@layouts/landing/LandingLayout";
 
+const queryClient = new QueryClient();
+
 function App() {
-	const queryClient = new QueryClient();
 
 	return (
 		<QueryClientProvider client={queryClient}>

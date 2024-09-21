@@ -5,7 +5,6 @@ import { AnimatePresence } from "framer-motion";
 import { RootState } from "store";
 
 import SectionPreloader from "../section-preloader/SectionPreloader";
-import HeroImage from "../Hero-image/HeroImage";
 import HeroPinnedSection from "../hero-pinned-section/HeroPinnedSection";
 
 interface PageLayoutProps {
