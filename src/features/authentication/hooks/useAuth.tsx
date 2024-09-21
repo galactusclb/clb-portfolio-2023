@@ -1,10 +1,8 @@
-import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
-
+import { AuthState, authActions } from "@store/authSlice";
+import { handleError } from "@utils/errorHandler";
 import { RootState } from "store";
-import { AuthState, authActions } from "store/authSlice";
-import { handleError } from "utils/errorHandler";
 import { doLogin, doSignup } from "../services/auth.service";
 
 const useAuth = () => {

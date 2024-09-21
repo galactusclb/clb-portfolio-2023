@@ -2,7 +2,7 @@ import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 
 import UserRoutes from "routes/user.routes";
 import Header from "./components/Header";
-import useRouteGenerator from "hook/useRouteGenerator";
+import useRouteGenerator from "@hooks/useRouteGenerator";
 
 const UserLayout = () => {
 	const location = useLocation();

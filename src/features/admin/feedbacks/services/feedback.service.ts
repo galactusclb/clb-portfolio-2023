@@ -1,6 +1,6 @@
 
-import { getApi } from "lib/fetch"
-import { buildResponse } from "utils/responseBuilder";
+import { getApi } from "@lib/fetch"
+import { buildResponse } from "@utils/responseBuilder";
 
 export const GetFeedbacks = async () => {
     const response = await getApi()

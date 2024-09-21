@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 import { RootState } from "store";
 import { opacity, slideUp } from "./anim";
-import useCachingImages from "hook/useCachingImages";
+import useCachingImages from "@hooks/useCachingImages";
 
 interface SectionPreloaderProps {}
 
