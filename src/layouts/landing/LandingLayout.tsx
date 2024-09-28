@@ -1,10 +1,11 @@
+import { FC } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { FC } from "react";
 
-import { HomePageWrapper } from "features/landing/full-page";
+import { HomePageWrapper } from "@features/landing/full-page";
 
 import { HomePageContextProvider } from "./context/HomeWrapperProvider";
+import { PlutoPageWrapper } from "@features/landing/pluto-page";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -47,7 +48,8 @@ const LandingLayout: FC<LandingLayoutProps> = () => {
 
 	return (
 		<HomePageContextProvider>
-			<HomePageWrapper />
+			{/* <HomePageWrapper /> */}
+			<PlutoPageWrapper />
 		</HomePageContextProvider>
 	);
 };
