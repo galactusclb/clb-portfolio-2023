@@ -18,18 +18,19 @@
 
 		"baseUrl": "src",
 		"paths": {
-			"@lib/*": ["lib/*"],
+			"@lib/*" : ["_shared/lib/*"],
 			"@styles/*": ["assets/styles/*"],
 			"@images/*": ["assets/images/*"],
-			"@models/*": ["models/*"],
+			"@models/*": ["_shared/models/*"],
 			"@layouts/*": ["layouts/*"],
 			"@pages/*": ["pages/*"],
 			"@routes/*": ["routes/*"],
 			"@components/*": ["components/*"],
 			"@ui/*": ["components/ui/*"],
-			"@modules/*": ["modules/*"],
-			"@utils/*": ["utils/*"],
-			"@hooks/*": ["hooks/*"],
+			"@features/*" : ["features/*"],
+			"@utils/*": ["_shared/utils/*"],
+			"@hooks/*" : ["_shared/hooks/*"],
+			"@store/*" : ["store/*"],
 			"@dist/*": ["../dist/*"]
 		},
 

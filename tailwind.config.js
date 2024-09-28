@@ -7,6 +7,9 @@ export default {
   ],
   theme: {
     extend: {
+      transformOrigin: {
+        'center-right': 'center right',
+      },
       colors: {
         // border: "hsl(var(--border))",
         // input: "hsl(var(--input))",
@@ -58,6 +61,15 @@ export default {
         "16": "4rem"
       }
     },
+    animation: {
+      loopL: 'loopTextLeft 4s linear infinite'
+    },
+    keyframes: {
+      loopTextLeft: {
+        '0%': { transform: 'translateX(0)' },
+        '100%': { transform: 'translateX(-100%)' },
+      }
+    }
   },
   plugins: [],
 }

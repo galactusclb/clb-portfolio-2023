@@ -1,10 +1,9 @@
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
+import Header from "./components/Header"; 
+import useAuth from "@features/authentication/hooks/useAuth";
+import AdminRoutes from "@routes/admin.routes";
+import useRouteGenerator from "@hooks/useRouteGenerator";
 
-import AdminRoutes from "routes/admin.routes";
-import Header from "./components/Header";
-import { RouteType } from "@models/Route.model";
-import useAuth from "features/authentication/hooks/useAuth";
-import useRouteGenerator from "hook/useRouteGenerator";
 
 const AdminLayout = () => {
 	const { isLoggedIn } = useAuth();
