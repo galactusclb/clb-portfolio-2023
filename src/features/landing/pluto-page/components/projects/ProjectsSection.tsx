@@ -20,43 +20,45 @@ const ProjectsSection: FC<ProjectsSectionProps> = ({ }) => {
     useGSAP(() => {
         const sliderChildren = document.querySelectorAll('.slider-item')
 
-        if (sliderChildren?.length) {
-            const tl = gsap.timeline({
-                defaults: {
-                    ease: "none",
-                },
-                scrollTrigger: {
-                    trigger: sliderContainer.current,
-                    pin: true,
-                    start: "top top",
-                    end: "+=300%",
-                    // end: () => `+=${slider.current?.offsetWidth}`,
-                    scrub: 1,
-                    markers: true,
-                    // snap: 0.33,
-                }
-            })
+        if (!sliderChildren?.length) return
 
-            setTimeline(tl)
+        const tl = gsap.timeline({
+            defaults: {
+                ease: "none",
+            },
+            scrollTrigger: {
+                trigger: sliderContainer.current,
+                pin: true,
+                start: "top top",
+                end: "+=300%",
+                // end: () => `+=${slider.current?.offsetWidth}`,
+                scrub: 1,
+                markers: true,
+                invalidateOnRefresh: true
+                // snap: 0.33,
+            }
+        })
 
-            sliderChildren.forEach((item, index) => {
-                if (index + 1 < sliderChildren?.length) {
-                    tl?.fromTo(
-                        '.slider-wrapper',
-                        {
-                            x: -1 * index * item.clientWidth,
-                            ease: "none"
-                        },
-                        {
-                            x: -1 * (index + 1) * item.clientWidth,
-                            ease: "none"
-                        }
-                    )
-                }
-            })
+        setTimeline(tl)
 
-            // ScrollTrigger.refresh();
-        }
+        sliderChildren.forEach((item, index) => {
+            if (index + 1 < sliderChildren?.length) {
+                tl?.fromTo(
+                    '.slider-wrapper',
+                    {
+                        x: -1 * index * item.clientWidth,
+                        ease: "none"
+                    },
+                    {
+                        x: -1 * (index + 1) * item.clientWidth,
+                        ease: "none"
+                    }
+                )
+            }
+        })
+
+        // ScrollTrigger.refresh();
+
     }, {
         scope: sliderContainer,
         dependencies: [windowWidth]

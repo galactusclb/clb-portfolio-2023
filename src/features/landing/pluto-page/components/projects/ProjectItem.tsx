@@ -34,9 +34,9 @@ const ProjectItem: FC<ProjectItemProps> = ({
             scale: 0.7,
             filter: "grayscale(100%) sepia(20%) brightness(80%)"
         }, {
-            // filter: "none"
+            filter: "none",
             scale: 1,
-            ease: "power2",
+            ease: "circ.in",
         })
 
     }, {

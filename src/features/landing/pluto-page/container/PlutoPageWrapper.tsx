@@ -4,7 +4,6 @@ import HeroSection from "../components/hero/HeroSection";
 import AboutSection from "../components/about/AboutSection";
 import ProjectsSection from "../components/projects/ProjectsSection";
 import ContactSection from "../components/contact/ContactSection";
-import HorizontalScrollingSection from "@features/landing/full-page/components/horizontal-scrolling-section/HorizontalScrollingSection";
 
 const PlutoPageWrapper: FC = () => {
     return (
@@ -13,7 +12,6 @@ const PlutoPageWrapper: FC = () => {
             <HeroSection />
             <AboutSection />
             <ProjectsSection />
-            {/* <HorizontalScrollingSection/> */}
             <ContactSection />
         </div>
     )
