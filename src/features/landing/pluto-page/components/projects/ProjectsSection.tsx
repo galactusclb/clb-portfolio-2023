@@ -1,9 +1,9 @@
-import { FC, useRef, useState } from 'react'
-import RevealHeading from '../common/RevealHeading';
 import { useGSAP } from '@gsap/react';
+import { useWindowSize } from '@hooks/index';
 import gsap from 'gsap';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useWindowSize } from '@hooks/index';
+import { FC, useRef, useState } from 'react';
+import RevealHeading from '../common/RevealHeading';
 import ProjectItem from './ProjectItem';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -13,17 +13,12 @@ interface ProjectsSectionProps { }
 const ProjectsSection: FC<ProjectsSectionProps> = ({ }) => {
 
     const sliderContainer = useRef<HTMLDivElement>(null)
-    const slider = useRef<HTMLDivElement>(null)
     const [timeline, setTimeline] = useState<gsap.core.Timeline | null>(null);
 
     const windowWidth = useWindowSize()
 
-    console.log(windowWidth);
-
-
     useGSAP(() => {
         const sliderChildren = document.querySelectorAll('.slider-item')
-        console.log(sliderChildren?.length);
 
         if (sliderChildren?.length) {
             const tl = gsap.timeline({
@@ -34,9 +29,9 @@ const ProjectsSection: FC<ProjectsSectionProps> = ({ }) => {
                     trigger: sliderContainer.current,
                     pin: true,
                     start: "top top",
-                    // end: "+=300%",
-                    end: () => `+=${slider.current?.offsetWidth}`,
-                    scrub: 2,
+                    end: "+=300%",
+                    // end: () => `+=${slider.current?.offsetWidth}`,
+                    scrub: 1,
                     markers: true,
                     // snap: 0.33,
                 }
@@ -47,7 +42,7 @@ const ProjectsSection: FC<ProjectsSectionProps> = ({ }) => {
             sliderChildren.forEach((item, index) => {
                 if (index + 1 < sliderChildren?.length) {
                     tl?.fromTo(
-                        slider.current,
+                        '.slider-wrapper',
                         {
                             x: -1 * index * item.clientWidth,
                             ease: "none"
@@ -79,8 +74,7 @@ const ProjectsSection: FC<ProjectsSectionProps> = ({ }) => {
                 </h1>
             </RevealHeading>
             <div
-                ref={slider}
-                className="relative flex gap-2 pb-5 w-fit h-fit sm:gap-4">
+                className="relative flex gap-2 pb-5 slider-wrapper w-fit h-fit sm:gap-4">
                 {[
                     { title: "ZEEEBRAZE", color: "bg-green-300" },
                     { title: "ZEEEBRAZE", color: "bg-red-300" },

@@ -1,7 +1,6 @@
-import { SectionTitle } from '@components/ui';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
-import { FC, useRef } from 'react'
+import { FC, useRef } from 'react';
 import SplitType from 'split-type';
 
 interface HeroSectionProps {

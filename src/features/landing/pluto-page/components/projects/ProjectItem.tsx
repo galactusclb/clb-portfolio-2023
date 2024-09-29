@@ -15,9 +15,8 @@ const ProjectItem: FC<ProjectItemProps> = ({
 }) => {
 
     const itemRef = useRef<HTMLDivElement>(null)
-    useGSAP(()=>{
-        console.log(timeline);
-        
+
+    useGSAP(() => {
         if (!timeline) return
 
         const tl = gsap.timeline({

@@ -6,10 +6,11 @@ import { HomePageWrapper } from "@features/landing/full-page";
 
 import { HomePageContextProvider } from "./context/HomeWrapperProvider";
 import { PlutoPageWrapper } from "@features/landing/pluto-page";
+import SmoothScroller from "@components/shared/SmoothScroller";
 
 gsap.registerPlugin(ScrollTrigger);
 
-interface LandingLayoutProps {}
+interface LandingLayoutProps { }
 
 const LandingLayout: FC<LandingLayoutProps> = () => {
 	// const [width, height] = useWindowSize();
@@ -48,8 +49,10 @@ const LandingLayout: FC<LandingLayoutProps> = () => {
 
 	return (
 		<HomePageContextProvider>
-			{/* <HomePageWrapper /> */}
-			<PlutoPageWrapper />
+			<SmoothScroller >
+				{/* <HomePageWrapper /> */}
+				<PlutoPageWrapper />
+			</SmoothScroller>
 		</HomePageContextProvider>
 	);
 };
