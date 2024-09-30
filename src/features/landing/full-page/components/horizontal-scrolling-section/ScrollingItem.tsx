@@ -24,6 +24,8 @@ const ScrollingItem = forwardRef<HTMLDivElement, ScrollingItemProps>(
 		const imgRef = useRef<HTMLImageElement>(null);
 
 		const createAnimation = useCallback(() => {
+			if (!timeline) return
+
 			const tl = gsap.timeline({
 				scrollTrigger: {
 					containerAnimation: timeline,
@@ -103,18 +105,18 @@ const ScrollingItem = forwardRef<HTMLDivElement, ScrollingItemProps>(
 			<div
 				ref={ref}
 				onClick={onClick}
-				className="relative flex flex-col items-start justify-center borde border-slate-200 snap-center rounded-lg  overflow-hidden"
+				className="relative flex flex-col items-start justify-center overflow-hidden rounded-lg borde border-slate-200 snap-center"
 			>
 				<div className="w-[360px] h-[420px] overflow-hidden " ref={wrapper}>
 					<img
 						ref={imgRef}
 						src={member?.image}
 						alt=""
-						className="w-full h-full object-cover"
+						className="object-cover w-full h-full"
 					/>
 				</div>
-				<h4 className="text-4xl text-white mt-4">{member?.name}</h4>
-				<p className="text-2xl text-white mt-3">{member?.role}</p>
+				<h4 className="mt-4 text-4xl text-white">{member?.name}</h4>
+				<p className="mt-3 text-2xl text-white">{member?.role}</p>
 			</div>
 		);
 	}

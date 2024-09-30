@@ -1,14 +1,16 @@
+import { FC } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { FC } from "react";
 
-import { HomePageWrapper } from "features/landing/full-page";
+import { HomePageWrapper } from "@features/landing/full-page";
 
 import { HomePageContextProvider } from "./context/HomeWrapperProvider";
+import { PlutoPageWrapper } from "@features/landing/pluto-page";
+import SmoothScroller from "@components/shared/SmoothScroller";
 
 gsap.registerPlugin(ScrollTrigger);
 
-interface LandingLayoutProps {}
+interface LandingLayoutProps { }
 
 const LandingLayout: FC<LandingLayoutProps> = () => {
 	// const [width, height] = useWindowSize();
@@ -47,7 +49,10 @@ const LandingLayout: FC<LandingLayoutProps> = () => {
 
 	return (
 		<HomePageContextProvider>
-			<HomePageWrapper />
+			<SmoothScroller >
+				{/* <HomePageWrapper /> */}
+				<PlutoPageWrapper />
+			</SmoothScroller>
 		</HomePageContextProvider>
 	);
 };

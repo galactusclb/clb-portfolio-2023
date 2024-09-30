@@ -132,13 +132,13 @@ const HorizontalScrollingSection: FC = () => {
 		<section
 			ref={mainSliderRef}
 			id="main-slider-container"
-			className="flex w-full h-screen relative overflow-hidden mt-56 bg-slate-900 pt-24 ps-32"
+			className="relative flex w-full h-screen pt-24 mt-56 overflow-hidden bg-slate-900 ps-32"
 		>
-			<h3 className="text-white text-9xl z-10">MEET THE TEAM</h3>
+			<h3 className="z-10 text-white text-9xl">MEET THE TEAM</h3>
 			<div
 				ref={sliderRef}
 				id="slider-container"
-				className="absolute flex items-cente gap-24 bottom-24 w-fit min-w-full snap-x ms-96"
+				className="absolute flex min-w-full gap-24 items-cente bottom-24 w-fit snap-x ms-96"
 			>
 				{items?.map((item, index) => {
 					return (

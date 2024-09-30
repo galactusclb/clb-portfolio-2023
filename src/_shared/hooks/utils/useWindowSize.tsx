@@ -1,20 +1,27 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react"
+import useDebounce from "./useDebounce"
 
 const useWindowSize = () => {
-	const [size, setSize] = useState([window.innerWidth, window.innerHeight]);
+	function getSize() {
+		return {
+			width: window.innerWidth,
+			height: window.innerHeight,
+		}
+	}
+
+	const [windowSize, setWindowSize] = useState(getSize)
+
+	const debouncedValue = useDebounce(windowSize.width)
 
 	useEffect(() => {
-		function updateSize() {
-			setSize([window.innerWidth, window.innerHeight]);
-		}
+		// Debounce to avoid the function fire multiple times
+		const handleResizeDebounced = () => setWindowSize(getSize())
 
-		updateSize();
-		window.addEventListener("resize", updateSize);
+		window.addEventListener("resize", handleResizeDebounced)
+		return () => window.removeEventListener("resize", handleResizeDebounced)
+	}, [])
 
-		return () => window.removeEventListener("resize", updateSize);
-	}, []);
-
-	return size;
-};
+	return debouncedValue
+}
 
 export default useWindowSize;
