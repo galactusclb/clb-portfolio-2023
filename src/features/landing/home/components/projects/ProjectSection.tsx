@@ -21,8 +21,8 @@ const ProjectSection: FC = () => {
     const projectItems = ['1', '2', '3']
 
     return (
-        <section ref={containerRef} className='relative  bg-[#F7F8F8] z-[2]'>
-            <div className='flex flex-col pt-48 gap-36 lg:px-32'>
+        <section ref={containerRef} className='relative px-3 bg-[#F7F8F8] z-[2]'>
+            <div className='flex flex-col pt-48 pb-24 gap-36 lg:px-32'>
                 <div>
                     <RevealHeading>
                         <h2 className='text-6xl'>

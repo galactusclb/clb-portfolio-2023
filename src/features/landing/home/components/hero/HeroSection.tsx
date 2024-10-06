@@ -4,6 +4,7 @@ import { useGSAP } from '@gsap/react';
 import SplitType from 'split-type';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import ImageWrapper from '../common/ImageWrapper';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -17,7 +18,7 @@ const HeroSection: FC = () => {
         const heading = new SplitType('h1', { types: 'chars' })
 
         tl.from(heading.chars, {
-            delay: 1.6,
+            delay: 0.6,
             stagger: {
                 amount: 0.4
             },
@@ -67,15 +68,15 @@ const HeroSection: FC = () => {
 
     return (
         <section ref={containerRef} className='relative flex items-center justify-center h-screen'>
-            <div className='relative'>
-                <h1 className='flex lg:text-[15rem] 2xl:text-[19rem]'>
+            <div className='relative flex flex-col gap-10 md:block'>
+                <h1 className='flex text-7xl lg:text-[15rem] 2xl:text-[19rem]'>
                     HELLOW
                 </h1>
 
-                <div className='hero-pic-wrapper absolute transform -translate-x-1/2 -translate-y-1/2 bg-[#f6deb0] top-1/2 left-1/2 rounded-2xl w-80 h-80 aspect-square flex justify-center items-center'>
-                    <img src={img} alt="clb illustrate image" className='h-full' />
-                    <div className='hero-pic-outline absolute flex w-[105%] h-[105%] border-[3px] border-black border-solid -rotate-0 rounded-2xl'></div>
-                </div>
+                <ImageWrapper
+                 image={img}
+                 className='-translate-x-1/2 sm:-translate-y-1/2 md:absolute top-1/2 left-1/2'
+                 />
 
             </div>
         </section>

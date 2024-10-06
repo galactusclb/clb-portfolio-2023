@@ -49,7 +49,7 @@ const ProjectItem: FC<ProjectItemProps> = ({ }) => {
     })
 
     return (
-        <div ref={projectContainerRef} className='px-3 pb-12 lg:px-8'>
+        <div ref={projectContainerRef} className='pb-12 lg:px-8'>
             <div className='flex items-center justify-between gap-6'>
                 <RevealHeading>
                     <h5 className='font-sans italic'>Web Development</h5>

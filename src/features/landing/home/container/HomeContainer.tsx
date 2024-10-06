@@ -10,7 +10,7 @@ import ContactSection from '../components/contact/ContactSection';
 const HomeContainer: FC = () => {
     return (
         // <div className='relative w-full min-h-screen bg-[#F7F828]'>
-        <div className='relative w-full min-h-screen bg-[#F7F8F8] text-[#3D4343] overflow-y-auto'>
+        <div className='relative w-full min-h-screen bg-[#F7F8F8] text-[#3D4343] overflow-y-auto overflow-x-hidden'>
             <Header />
             <HeroSection />
             <AboutSection />

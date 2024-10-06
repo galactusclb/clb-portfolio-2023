@@ -61,8 +61,8 @@ const WorksSection: FC = () => {
     })
 
     return (
-        <section ref={sliderContainer} className='relative flex flex-col w-full h-screen py-10 overflow-hidden 2xl:mx-auto gap-36 lg:px-32'>
-            <div className='flex items-end flex-col'>
+        <section ref={sliderContainer} className='relative flex flex-col w-full h-screen px-3 py-10 overflow-hidden 2xl:mx-auto gap-36 lg:px-32'>
+            <div className='flex flex-col items-end'>
                 {/* <RevealHeading>
                     <h2 className='text-6xl'>
                         Sooooo,
@@ -74,7 +74,7 @@ const WorksSection: FC = () => {
             </div>
 
             <div
-                className="relative flex gap-2 pb-5 slider-wrapper w-fit h-fit sm:gap-4 lg:gap-10">
+                className="relative flex gap-10 pb-5 slider-wrapper w-fit h-fit lg:gap-10">
                 {[
                     { title: "Web Development", color: "bg-orange-200" },
                     { title: "UI/UX Design", color: "bg-red-200" },

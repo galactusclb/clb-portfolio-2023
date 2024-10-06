@@ -18,7 +18,7 @@ const HeaderNav: FC = ({ }) => {
     ]
 
     return (
-        <div className='relative flex gap-7'>
+        <div className='relative hidden md:flex gap-7'>
             {navItems?.map((item, index) => <NavItem key={index} title={item.title} isActive={item?.isActive} />)}
         </div>
     )

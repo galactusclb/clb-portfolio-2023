@@ -8,8 +8,8 @@ interface SectionDescriptionProps {
 
 const SectionDescription: FC<SectionDescriptionProps> = ({ }) => {
     return (
-        <div className='flex items-center justify-between lg:gap-12'>
-            <div className='flex flex-col lg:w-[30ch] gap-10'>
+        <div className='flex flex-col items-center justify-between gap-24 md:flex-row'>
+            <div className='flex flex-col w-full lg:w-[30ch] gap-10 order-2 md:order-1'>
                 <RevealText>
                     <p className='flex flex-col gap-2 font-sans leading-6'>
                         <span>My name is CJ, and I'm a front-end developer, who creates websites with a special focus on animations and user interaction.</span>
@@ -26,7 +26,7 @@ const SectionDescription: FC<SectionDescriptionProps> = ({ }) => {
                 </a>
             </div>
 
-            <div className='relative flex items-center justify-center rounded-2xl w-80 h-80 aspect-square'>
+            <div className='relative flex items-center justify-center order-1 rounded-2xl w-80 h-80 aspect-square md:order-2'>
                 <div className='bg-red-400 rounded-2xl w-full h-full overflow-hidden z-[2]'>
                     <img src={img} alt="clb illustrate image" className='object-cover h-full' />
                 </div>
