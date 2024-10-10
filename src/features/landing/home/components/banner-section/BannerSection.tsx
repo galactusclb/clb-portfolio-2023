@@ -3,7 +3,7 @@ import RevealHeading from '../common/RevealHeading';
 
 const BannerSection: FC = () => {
     return (
-        <section className='relative py-48 text-center 2xl:mx-auto 2xl:w-8/12 gap-36 lg:px-24'>
+        <section className='relative py-48 text-center 2xl:mx-auto 2xl:w-8/12 gap-36 lg:px-24' id="sas">
             <RevealHeading>
                 <h2 className='text-6xl'>
                     <span className='font-sans'>You</span> Bring the Vision,

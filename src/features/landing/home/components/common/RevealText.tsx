@@ -41,9 +41,10 @@ const RevealText: FC<RevealTextProps> = ({ className, children }) => {
 
         ScrollTrigger.create({
             trigger: splitTextRef.current,
-            start: "top 85%",
+            start: "top 75%",
             onEnter: () => tl.play(),
-            onLeaveBack: () => tl.reverse()
+            onLeaveBack: () => tl.reverse(),
+            invalidateOnRefresh: true
         })
     }, {
         scope: splitTextRef

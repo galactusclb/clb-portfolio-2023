@@ -59,6 +59,9 @@ dependencies:
   split-type:
     specifier: ^0.3.4
     version: 0.3.4
+  tailwindest:
+    specifier: ^2.3.6
+    version: 2.3.6
 
 devDependencies:
   '@tanstack/eslint-plugin-query':
@@ -3903,6 +3906,10 @@ packages:
     transitivePeerDependencies:
       - ts-node
     dev: true
+
+  /tailwindest@2.3.6:
+    resolution: {integrity: sha512-MQbOu8bf6GeSILe4NiPen3NyBJVI3Zvz5AgU8t8hgCR3hcATandkeNwZc/74gRKt7+ZwvGGZ+fr7+t684c6/Cg==}
+    dev: false
 
   /text-table@0.2.0:
     resolution: {integrity: sha512-N+8UisAXDGk8PFXP4HAzVR9nbfmVJ3zYLAWiTIoqC5v5isinhr+r5uaO8+7r3BMfuNIufIsA7RdpVgacC2cSpw==}

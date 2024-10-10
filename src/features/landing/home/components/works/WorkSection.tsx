@@ -6,8 +6,15 @@ import { FC, useRef, useState } from 'react';
 import RevealHeading from '../common/RevealHeading';
 import RevealText from '../common/RevealText';
 import WorkItem from './WorkItem';
+import { WorkItemType } from './WorkItem.type';
 
 gsap.registerPlugin(ScrollTrigger);
+
+const works: WorkItemType[] = [
+    { title: "Web Development", bgColor: 'bg-orange-200', description: "Want modern looking landing page? Portfolio page with seamless animations?, that don't just look pretty – they're downright functional. Think of me as your personal web magician, waving my coding wand to create something truly special." },
+    { title: "UI/UX Design", bgColor: "bg-red-200", description: "Say goodbye to confusing websites and hello to a modern, user-friendly experience and even your grandma can figure it out (and she'll probably love it too)! I'll design something that's both stylish and practical, so your visitors will have a blast navigating your site." },
+    { title: "Full-Stack Development", bgColor: "bg-purple-200", description: "WebSites? Web Apps? Landing page ? ERP ? – not the same! I've got the skills to handle both. As your fullstack developer, I'll bring your idea from concept to launch with industry standard, that's what makes me stand out." },
+]
 
 const WorksSection: FC = () => {
 
@@ -32,7 +39,7 @@ const WorksSection: FC = () => {
                 start: "top top",
                 end: "+=300%",
                 // end: () => `+=${slider.current?.offsetWidth}`,
-                scrub: 1, 
+                scrub: 1,
                 invalidateOnRefresh: true
                 // snap: 0.33,
             }
@@ -63,30 +70,28 @@ const WorksSection: FC = () => {
     return (
         <section ref={sliderContainer} className='relative flex flex-col w-full h-screen px-3 py-10 overflow-hidden 2xl:mx-auto gap-36 lg:px-32'>
             <div className='flex flex-col items-end'>
-                {/* <RevealHeading>
+                <RevealHeading>
                     <h2 className='text-6xl'>
                         Sooooo,
                     </h2>
                 </RevealHeading>
                 <RevealText>
                     <p className='pt-3 font-sans'>How Will I Help You With...</p>
-                </RevealText> */}
+                </RevealText>
             </div>
 
             <div
                 className="relative flex gap-10 pb-5 slider-wrapper w-fit h-fit lg:gap-10">
-                {[
-                    { title: "Web Development", color: "bg-orange-200" },
-                    { title: "UI/UX Design", color: "bg-red-200" },
-                    { title: "Full-Stack Development", color: "bg-purple-200" },
-                ].map((item, index) => (
-                    <WorkItem
-                        key={index}
-                        index={index}
-                        timeline={timeline}
-                        {...item}
-                    />
-                ))}
+                {
+                    works.map((item, index) => (
+                        <WorkItem
+                            key={index}
+                            index={index}
+                            timeline={timeline}
+                            item={item}
+                        />
+                    ))
+                }
             </div>
         </section>
     )

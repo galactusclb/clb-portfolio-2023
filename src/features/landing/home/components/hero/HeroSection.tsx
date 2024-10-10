@@ -59,7 +59,8 @@ const HeroSection: FC = () => {
                 trigger: containerRef.current,
                 start: 'top top',
                 end: 'bottom top',
-                scrub: true
+                scrub: true,
+                invalidateOnRefresh: true
             }
         });
     }, {
@@ -69,7 +70,7 @@ const HeroSection: FC = () => {
     return (
         <section ref={containerRef} className='relative flex items-center justify-center h-screen'>
             <div className='relative flex flex-col gap-10 md:block'>
-                <h1 className='flex text-7xl lg:text-[15rem] 2xl:text-[19rem]'>
+                <h1 className='flex text-7xl md:text-9xl lg:text-[15rem] 2xl:text-[19rem]'>
                     HELLOW
                 </h1>
 

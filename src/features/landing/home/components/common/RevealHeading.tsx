@@ -52,6 +52,7 @@ const RevealHeading: FC<RevealHeadingProps> = ({ className, children, orientatio
             horizontal: orientation === 'horizontal',
             onEnter: () => tl.play(),
             onLeaveBack: () => tl.reverse(),
+            invalidateOnRefresh: true
         })
     }, {
         scope: splitTextRef

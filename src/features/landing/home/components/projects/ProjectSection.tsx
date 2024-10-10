@@ -1,11 +1,11 @@
-import { FC, useRef } from 'react'
-import ProjectItem from './ProjectItem';
-import ProjectNameSidebar from './ProjectNameSidebar';
-import DiscoverMore from './DiscoverMore';
-import { useScroll, useTransform } from 'framer-motion';
-import { motion } from "framer-motion"
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { FC, useRef } from 'react';
 import RevealHeading from '../common/RevealHeading';
 import RevealText from '../common/RevealText';
+import DiscoverMore from './DiscoverMore';
+import ProjectItem from './ProjectItem';
+import ProjectNameSidebar from './ProjectNameSidebar';
+import useSidemenuAnimation from '../../hooks/useSidemenuAnimation';
 
 const ProjectSection: FC = () => {
 
@@ -18,7 +18,7 @@ const ProjectSection: FC = () => {
 
     const height = useTransform(scrollYProgress, [0, 0.95], [50, 0])
 
-    const projectItems = ['1', '2', '3']
+    const { projectList } = useSidemenuAnimation({ containerRef })
 
     return (
         <section ref={containerRef} className='relative px-3 bg-[#F7F8F8] z-[2]'>
@@ -35,19 +35,19 @@ const ProjectSection: FC = () => {
                 </div>
 
                 <div className="grid gap-4 lg:grid-cols-[280px,_1fr]">
-                    <div className='flex-row justify-between hidden sm:flex'>
+                    <div className='flex-row justify-between hidden gap-4 xl:flex'>
                         <ProjectNameSidebar
-                            list={[
-                                'Tasty Mock',
-                                'Koeta'
-                            ]}
+                            list={projectList}
                         />
                         <span className='block h-full w-[2px] rounded-full bg-[linear-gradient(0deg,rgba(0,0,0,0)0%,rgba(231,229,228,1)10%,rgba(231,229,228,1)90%,rgba(0,0,0,0)100%)]'></span>
                     </div>
-                    <div className="flex flex-col gap-12">
+                    <div className="flex flex-col">
                         {
-                            projectItems?.map((item, key) => (
-                                <ProjectItem key={key} />
+                            projectList?.map((item, key) => (
+                                <ProjectItem
+                                    key={key}
+                                    orderNumber={`0${key + 1}/0${projectList?.length}`}
+                                    item={item} />
                             ))
                         }
                     </div>

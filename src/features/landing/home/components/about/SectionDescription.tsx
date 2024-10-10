@@ -26,11 +26,12 @@ const SectionDescription: FC<SectionDescriptionProps> = ({ }) => {
                 </a>
             </div>
 
+            
             <div className='relative flex items-center justify-center order-1 rounded-2xl w-80 h-80 aspect-square md:order-2'>
-                <div className='bg-red-400 rounded-2xl w-full h-full overflow-hidden z-[2]'>
+                <div className='rounded-2xl w-full h-full overflow-hidden z-[2]'>
                     <img src={img} alt="clb illustrate image" className='object-cover h-full' />
                 </div>
-                <div className='absolute flex w-full h-full border-[3px] border-black border-solid rotate-12 rounded-2xl'></div>
+                <div className='absolute flex w-full h-full border-[2px] border-black border-solid rotate-12 rounded-2xl'></div>
             </div>
         </div>
     )
