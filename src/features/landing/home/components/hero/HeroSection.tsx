@@ -5,6 +5,7 @@ import SplitType from 'split-type';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import ImageWrapper from '../common/ImageWrapper';
+import { Camera } from 'react-feather';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -17,31 +18,51 @@ const HeroSection: FC = () => {
 
         const heading = new SplitType('h1', { types: 'chars' })
 
-        tl.from(heading.chars, {
-            delay: 0.6,
-            stagger: {
-                amount: 0.4
-            },
-            y: 80,
-            opacity: 0
-        })
-            .from('.hero-pic-outline', {
-                opacity: 0,
-                width: 0,
-                delay: 0.5,
-                ease: "power2.in"
+        tl
+            .from(heading.chars, {
+                delay: 0.6,
+                stagger: {
+                    amount: 0.4
+                },
+                y: 80,
+                opacity: 0
             })
             .from('.hero-pic-wrapper', {
-                height: 0,
-                delay: 0.3
+                opacity: 0,
+                delay: 1
+            })
+            .fromTo('.mask img', {
+                scale: 2
+            }, {
+                scale: 1
+            })
+            .fromTo('.mask', {
+                opacity: 0
+            }, {
+                delay: 2,
+                opacity: 1,
+                clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+            }, 1)
+            .to('.mask', {
+                scale: 0.95, duration: 2
+            })
+            .fromTo('.hero-pic-outline', {
+                opacity: 0,
+                delay: 2,
+                scale: 0.5,
+                ease: "circ.in",
+            }, {
+                scale: 1,
+                opacity: 1
             })
             .to('.hero-pic-outline', {
                 rotate: 10,
                 ease: "slow(0.7,0.7,false)",
                 repeat: -1,
-                duration: 5,
+                duration: 4,
                 yoyo: true
             })
+
 
         gsap.fromTo(heading.chars, {
             y: 0
@@ -73,11 +94,10 @@ const HeroSection: FC = () => {
                 <h1 className='flex text-7xl md:text-9xl lg:text-[15rem] 2xl:text-[19rem]'>
                     HELLOW
                 </h1>
-
                 <ImageWrapper
-                 image={img}
-                 className='-translate-x-1/2 sm:-translate-y-1/2 md:absolute top-1/2 left-1/2'
-                 />
+                    image={img}
+                    className='-translate-x-1/2 sm:-translate-y-1/2 md:absolute top-1/2 left-1/2'
+                />
 
             </div>
         </section>
