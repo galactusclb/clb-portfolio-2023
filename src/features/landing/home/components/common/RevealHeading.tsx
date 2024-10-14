@@ -48,7 +48,6 @@ const RevealHeading: FC<RevealHeadingProps> = ({ className, children, orientatio
         ScrollTrigger.create({
             trigger: splitTextRef.current,
             start: scrollOrientationStartValue,
-            // markers: true,
             horizontal: orientation === 'horizontal',
             onEnter: () => tl.play(),
             onLeaveBack: () => tl.reverse(),

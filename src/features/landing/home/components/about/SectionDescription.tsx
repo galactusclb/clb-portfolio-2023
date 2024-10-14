@@ -4,6 +4,8 @@ import RevealText from '../common/RevealText';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
+import LinkWrapper from '../common/LinkWrapper';
+import PortfolioButton from '../common/PortfolioButton';
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -14,12 +16,14 @@ const SectionDescription: FC = () => {
     useGSAP(() => {
 
         const tl = gsap.timeline({
+            paused: true,
             scrollTrigger: {
                 trigger: '.image-wrapper',
                 start: 'top 60%',
-                toggleActions: "restart none none reverse",
+                // toggleActions: "restart none none reverse",
+                onEnter: () => tl.play(),
+                onLeaveBack: () => tl.reverse(),
                 invalidateOnRefresh: true,
-                markers: true,
             }
         })
 
@@ -61,13 +65,7 @@ const SectionDescription: FC = () => {
                     </p>
                 </RevealText>
 
-                <a className='relative flex gap-2 cursor-pointer group'>
-                    <p className='relative flex flex-col gap-[2px] w-fit uppercase group-hover:text-red-600 duration-200'>
-                        More about me
-                        <span className='block w-full h-[2px] bg-black rounded-lg group-hover:bg-red-600 duration-200'></span>
-                    </p>
-                    <div className="flex items-center justify-center font-sans text-white duration-200 bg-black rounded-full group-hover:bg-red-600 w-7 h-7">/</div>
-                </a>
+                <LinkWrapper title={'More about me'} />
             </div>
 
 

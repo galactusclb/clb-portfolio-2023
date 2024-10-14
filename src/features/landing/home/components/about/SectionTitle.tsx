@@ -18,9 +18,9 @@ const SectionTitle: FC<SectionTitleProps> = ({ }) => {
                 </RevealHeading>
             </h3>
 
-            <RevealText>
 
-                <p className='font-sans lg:text-base 2xl:text-lg w-full lg:w-[100ch]'>
+            <RevealText>
+                <p className='font-sans lg:text-base 2xl:text-lg w-full xl:max-w-[100ch]'>
                     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatum quam distinctio ut nesciunt, explicabo architecto velit! Lorem, ipsum dolor sit amet consectetur adipisicing elit. A, ex!
                 </p>
             </RevealText>

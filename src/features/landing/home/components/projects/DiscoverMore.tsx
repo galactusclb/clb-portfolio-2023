@@ -1,11 +1,8 @@
 import { FC } from 'react'
 import RevealHeading from '../common/RevealHeading';
+import LinkWrapper from '../common/LinkWrapper';
 
-interface DiscoverMoreProps {
-
-}
-
-const DiscoverMore: FC<DiscoverMoreProps> = ({ }) => {
+const DiscoverMore: FC = () => {
 
     const links: string[] = ['Web Development', 'UI Design', 'Illustration']
 
@@ -22,13 +19,7 @@ const DiscoverMore: FC<DiscoverMoreProps> = ({ }) => {
             <div className="flex flex-col items-center justify-center gap-16 lg:flex-row">
                 {
                     links?.map((item, key) => (
-                        <a className='relative flex gap-2 cursor-pointer group' key={key}>
-                            <p className='relative flex flex-col gap-[2px] w-fit uppercase group-hover:text-red-600 duration-200'>
-                                {item}
-                                <span className='block w-full h-[2px] bg-black rounded-lg group-hover:bg-red-600 duration-200'></span>
-                            </p>
-                            <div className="flex items-center justify-center font-sans text-white duration-200 bg-black rounded-full group-hover:bg-red-600 w-7 h-7">/</div>
-                        </a>
+                        <LinkWrapper key={key} title={item} />
                     ))
                 }
             </div>
