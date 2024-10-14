@@ -1,14 +1,11 @@
-import { FC, useRef } from 'react'
-import HeaderLogo from './HeaderLogo';
-import HeaderNav from './header-nav/HeaderNav';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
+import { FC, useRef } from 'react';
+import HeaderLogo from './HeaderLogo';
+import HeaderNav from './header-nav/HeaderNav';
 
-interface HeaderProps {
 
-}
-
-const Header: FC<HeaderProps> = () => {
+const Header: FC = () => {
 
     const headerRef = useRef<HTMLDivElement>(null)
 
@@ -17,7 +14,7 @@ const Header: FC<HeaderProps> = () => {
 
         const navLinks = gsap.utils.toArray('.nav-link')
 
-        tl.from(['.logo',navLinks], {
+        tl.from(['.logo', navLinks], {
             delay: 2,
             stagger: {
                 amount: 0.4,

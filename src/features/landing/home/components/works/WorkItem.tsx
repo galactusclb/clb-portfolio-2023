@@ -60,7 +60,7 @@ const WorkItem: FC<WorkItemProps> = ({
                 </div>
                 <RevealText>
                     <p className='w-full font-sans lg:w-3/4'>
-                        {item?.description || "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iste culpa adipisci odio esse doloribus! Totam qui, porro voluptatum maiores, quaerat, consectetur nemo libero alias facere commodi deleniti mollitia assumenda nostrum atque! Omnis, fugiat dolore. Pariatur."}
+                        {item?.description}
                     </p>
                 </RevealText>
             </div>

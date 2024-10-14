@@ -5,7 +5,6 @@ import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import LinkWrapper from '../common/LinkWrapper';
-import PortfolioButton from '../common/PortfolioButton';
 
 gsap.registerPlugin(ScrollTrigger)
 

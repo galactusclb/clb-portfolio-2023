@@ -1,5 +1,7 @@
-import { FC } from 'react'
-import NavItem, { NavItemProps } from './NavItem';
+import { FC } from 'react';
+import NavDesktop from './desktop/NavDesktop';
+import { NavItemProps } from './desktop/NavItem';
+import NavMobile from './mobile/NavMobile';
 
 
 const HeaderNav: FC = ({ }) => {
@@ -18,9 +20,10 @@ const HeaderNav: FC = ({ }) => {
     ]
 
     return (
-        <div className='relative hidden md:flex gap-7'>
-            {navItems?.map((item, index) => <NavItem key={index} title={item.title} isActive={item?.isActive} />)}
-        </div>
+        <>
+            <NavDesktop navItems={navItems} />
+            <NavMobile navItems={navItems}/>
+        </>
     )
 }
 
