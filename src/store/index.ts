@@ -1,9 +1,9 @@
-import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit"
-import storage from 'redux-persist/lib/storage';
+import { configureStore } from "@reduxjs/toolkit";
 import { persistReducer, persistStore } from "redux-persist";
+import storage from 'redux-persist/lib/storage';
 
-import authSlice from "./authSlice"
 import appLoadingConfigSlice from "./appLoadingConfigSlice";
+import authSlice from "./authSlice";
 
 
 const createPersistedReducer = (key: string, reducer: any) => {
@@ -25,11 +25,11 @@ const store = configureStore({
         //   todos: todosReducer,
         //   control: controlReducer,
     },
-    middleware: getDefaultMiddleware({
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware({
         serializableCheck: {
-            ignoredActions: ['persist/PERSIST']
-        }
-    })
+            ignoredActions: ['persist/PERSIST'],
+        },
+    }),
 })
 
 
