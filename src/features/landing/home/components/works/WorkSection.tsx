@@ -64,7 +64,8 @@ const WorksSection: FC = () => {
         })
     }, {
         scope: sliderContainer,
-        dependencies: [windowWidth]
+        dependencies: [windowWidth],
+        revertOnUpdate: true
     })
 
     return (

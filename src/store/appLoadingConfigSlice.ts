@@ -2,12 +2,12 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export interface appLoadingConfigState {
     preloadImageProgress?: number | string;
-    isProloadingFinished?: boolean
+    isPreloadingFinished?: boolean
 }
 
 const initialState: appLoadingConfigState = {
     preloadImageProgress: 0,
-    isProloadingFinished: false
+    isPreloadingFinished: false
 }
 
 const appLoadingConfigSlice = createSlice({
@@ -15,14 +15,10 @@ const appLoadingConfigSlice = createSlice({
     initialState,
     reducers: {
         setLoadingProgress(state, action: PayloadAction<number | string>) {
-            console.log(action.payload);
-
             state.preloadImageProgress = action.payload
         },
         setPreloadingFinishStatus(state, action: PayloadAction<boolean>) {
-            console.log(action.payload);
-
-            state.isProloadingFinished = action.payload
+            state.isPreloadingFinished = action.payload
         },
     }
 })

@@ -12,7 +12,7 @@ interface PageLayoutProps {
 }
 
 const PageLayout: FC<PageLayoutProps> = ({ children }) => {
-	const { isProloadingFinished } = useSelector(
+	const { isPreloadingFinished } = useSelector(
 		(state: RootState) => state.appLoadingConfig
 	);
 
@@ -28,19 +28,19 @@ const PageLayout: FC<PageLayoutProps> = ({ children }) => {
 	// 	return () => {
 	// 		clearTimeout(timeout);
 	// 	};
-	// 	// }, [isProloadingFinished]);
+	// 	// }, [isPreloadingFinished]);
 	// }, []);
 
 	return (
 		<div className="relative w-screen h-screen max-w-[100vw]">
 			<AnimatePresence mode="wait">
-				{!isProloadingFinished ? (
+				{!isPreloadingFinished ? (
 					// <>
 					<SectionPreloader />
 				) : // 	<HeroImage />
-				null}
+					null}
 			</AnimatePresence>
-			{isProloadingFinished ? children : null}
+			{isPreloadingFinished ? children : null}
 		</div>
 	);
 };

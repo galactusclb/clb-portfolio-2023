@@ -47,7 +47,8 @@ const RevealText: FC<RevealTextProps> = ({ className, children }) => {
             invalidateOnRefresh: true
         })
     }, {
-        scope: splitTextRef
+        scope: splitTextRef,
+        revertOnUpdate: true
     })
 
     useEffect(() => {

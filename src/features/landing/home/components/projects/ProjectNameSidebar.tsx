@@ -73,12 +73,7 @@ const ProjectNameSidebar: FC<ProjectNameSidebarProps> = ({ list }) => {
         //         );
         //     }
         // });
-    }, {
-        scope: containerRef,
-        dependencies: [list]
-    });
 
-    useEffect(() => {
         list?.forEach((item, key) => {
             const element = document.querySelector(`.project-title-${key} .active-dot`);
             if (item?.isActive) {
@@ -94,7 +89,10 @@ const ProjectNameSidebar: FC<ProjectNameSidebarProps> = ({ list }) => {
                     });
             }
         });
-    }, [list]);
+    }, {
+        scope: containerRef,
+        dependencies: [list],
+    });
 
     // const [isVisible, setIsVisible] = useState(show);
 

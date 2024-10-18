@@ -16,11 +16,11 @@ const HeroSection: FC = () => {
     useGSAP(() => {
         const tl = gsap.timeline()
 
-        const heading = new SplitType('h1', { types: 'chars' })
-
+        const heading = new SplitType('h1.hero-text', { types: 'chars' })
+        
         tl
             .from(heading.chars, {
-                delay: 0.6,
+                delay: 1,
                 stagger: {
                     amount: 0.4
                 },
@@ -39,7 +39,7 @@ const HeroSection: FC = () => {
             .fromTo('.mask', {
                 opacity: 0
             }, {
-                delay: 2,
+                delay: 2.4,
                 opacity: 1,
                 clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
             }, 1)
@@ -91,7 +91,7 @@ const HeroSection: FC = () => {
     return (
         <section ref={containerRef} className='relative flex items-center justify-center h-screen'>
             <div className='relative flex flex-col gap-10 md:block'>
-                <h1 className='flex text-7xl md:text-9xl lg:text-[15rem] 2xl:text-[19rem]'>
+                <h1 className='hero-text flex text-7xl md:text-9xl lg:text-[15rem] 2xl:text-[19rem]'>
                     HELLOW
                 </h1>
                 <ImageWrapper

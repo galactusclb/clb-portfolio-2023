@@ -19,9 +19,7 @@ const ProjectItem: FC<ProjectItemProps> = ({ item, orderNumber }) => {
 
 
     useGSAP(() => {
-
         const projectImages = gsap.utils.toArray('.image-wrapper') as HTMLElement[]
-        console.log(projectImages);
 
         projectImages.forEach((item) => {
 
@@ -60,7 +58,8 @@ const ProjectItem: FC<ProjectItemProps> = ({ item, orderNumber }) => {
 
         })
     }, {
-        scope: projectContainerRef
+        scope: projectContainerRef,
+        revertOnUpdate: true
     })
 
     return (

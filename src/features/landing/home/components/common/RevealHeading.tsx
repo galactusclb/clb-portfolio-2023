@@ -54,7 +54,8 @@ const RevealHeading: FC<RevealHeadingProps> = ({ className, children, orientatio
             invalidateOnRefresh: true
         })
     }, {
-        scope: splitTextRef
+        scope: splitTextRef,
+        revertOnUpdate: true
     })
 
     useEffect(() => {
