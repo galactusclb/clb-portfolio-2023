@@ -1,10 +1,11 @@
-import { useGSAP } from "@gsap/react"
+import { useGSAP } from "@gsap/react";
+import { useWindowSize } from "@hooks/index";
+import img from '@images/home/koeta-home.webp';
 import gsap from 'gsap';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { RefObject, useEffect, useState } from "react"
-import { Project } from "../components/projects/Project.type"
-import img from '@images/home/koeta-home.webp'
+import { RefObject, useState } from "react";
 import defaultTheme from 'tailwindcss/defaultTheme';
+import { Project } from "../components/projects/Project.type";
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -41,6 +42,7 @@ const useSidemenuAnimation = ({
     const [projectList, setProjectList] = useState<Project[]>(data)
 
     const toggleActive = (itemIndex: number, status: boolean, isBack?: boolean) => {
+        console.log(itemIndex);
 
         //to stay active the last item when scroll down
         if (itemIndex === projectList?.length - 1 && !status && !isBack) return
@@ -52,17 +54,23 @@ const useSidemenuAnimation = ({
         }))
     }
 
+    const windowWidth = useWindowSize()
+
     useGSAP(() => {
         let mm = gsap.matchMedia()
+        let st: ScrollTrigger;
 
         mm.add(`(min-width: ${defaultTheme.screens.xl})`, () => {
 
             const projectLinks: HTMLElement[] = gsap.utils.toArray('.project-title')
             const projectItems = gsap.utils.toArray('.project-item') as HTMLElement[]
 
-            //? To fixed the project side menu
-            ScrollTrigger.create({
-                trigger: '.project-sidebar',
+            const sidebar = document.querySelector('.project-sidebar');
+
+            // if (sidebar) {
+            //     //? To fixed the project side menu
+            st = ScrollTrigger.create({
+                trigger: sidebar,
                 start: "top 120px",
                 end: "bottom 30%",
                 // end: () => `+=${containerRef.current?.offsetHeight}`,
@@ -71,6 +79,7 @@ const useSidemenuAnimation = ({
 
                 // animation: animation
             })
+            // }
 
 
             //? To change the active side menu based on project
@@ -91,9 +100,16 @@ const useSidemenuAnimation = ({
                     invalidateOnRefresh: true
                 })
             })
+
         })
+
+        return () => {
+            st?.kill(true);
+        };
     }, {
-        scope: containerRef
+        scope: containerRef,
+        dependencies: [windowWidth],
+        revertOnUpdate: true
     })
 
     // useEffect(()=>{

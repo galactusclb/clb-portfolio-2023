@@ -34,7 +34,7 @@ const ProjectSection: FC = () => {
                     </RevealText>
                 </div>
 
-                <div className="grid gap-4 lg:grid-cols-[280px,_1fr]">
+                <div className="grid gap-4 xl:grid-cols-[280px,_1fr]">
                     <div className='flex-row justify-between hidden gap-4 xl:flex'>
                         <ProjectNameSidebar
                             list={projectList}

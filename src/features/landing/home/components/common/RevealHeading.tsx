@@ -3,6 +3,7 @@ import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import SplitType from 'split-type'
+import { useWindowSize } from '@hooks/index'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -17,6 +18,8 @@ const RevealHeading: FC<RevealHeadingProps> = ({ className, children, orientatio
     const splitTypeRef = useRef<SplitType | null>(null)
 
     const scrollOrientationStartValue = orientation === 'vertical' ? 'top 75%' : 'left 75%'
+
+    const windowWidth = useWindowSize()
 
     useGSAP(() => {
         if (!splitTextRef.current) return
@@ -55,7 +58,8 @@ const RevealHeading: FC<RevealHeadingProps> = ({ className, children, orientatio
         })
     }, {
         scope: splitTextRef,
-        revertOnUpdate: true
+        revertOnUpdate: true,
+        dependencies: [windowWidth]
     })
 
     useEffect(() => {

@@ -3,6 +3,7 @@ import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import SplitType from 'split-type'
+import { useWindowSize } from '@hooks/index'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -14,6 +15,8 @@ interface RevealTextProps {
 const RevealText: FC<RevealTextProps> = ({ className, children }) => {
     const splitTextRef = useRef<HTMLDivElement>(null)
     const splitTypeRef = useRef<SplitType | null>(null)
+
+    const windowWidth = useWindowSize()
 
     useGSAP(() => {
 
@@ -47,6 +50,7 @@ const RevealText: FC<RevealTextProps> = ({ className, children }) => {
             invalidateOnRefresh: true
         })
     }, {
+        dependencies: [windowWidth],
         scope: splitTextRef,
         revertOnUpdate: true
     })
