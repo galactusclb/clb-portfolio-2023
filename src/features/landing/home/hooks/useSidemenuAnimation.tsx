@@ -42,8 +42,6 @@ const useSidemenuAnimation = ({
     const [projectList, setProjectList] = useState<Project[]>(data)
 
     const toggleActive = (itemIndex: number, status: boolean, isBack?: boolean) => {
-        console.log(itemIndex);
-
         //to stay active the last item when scroll down
         if (itemIndex === projectList?.length - 1 && !status && !isBack) return
 

@@ -1,5 +1,6 @@
 import { Link } from '@components/ui';
 import { useGSAP } from '@gsap/react';
+import { useWindowSize } from '@hooks/index';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { FC, ReactNode, useRef } from 'react';
@@ -19,6 +20,8 @@ const LinkWrapper: FC<LinkWrapperProps> = ({ title }) => {
     const splitTextRef = useRef<HTMLDivElement>(null)
     const timeoutId = useRef<number>()
 
+    const windowWidth = useWindowSize()
+
     const { contextSafe } = useGSAP(() => {
         timeline.current = gsap.timeline({ paused: true })
 
@@ -29,7 +32,8 @@ const LinkWrapper: FC<LinkWrapperProps> = ({ title }) => {
             clearTimeout(timeoutId.current)
         })
     }, {
-        scope: linkRef
+        scope: linkRef,
+        dependencies: [windowWidth]
     })
 
     function iconHoverAnimation(timeline?: gsap.core.Timeline) {

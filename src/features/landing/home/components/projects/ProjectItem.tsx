@@ -5,6 +5,7 @@ import { FC, useRef } from 'react';
 import RevealHeading from '../common/RevealHeading';
 import RevealText from '../common/RevealText';
 import { Project } from './Project.type';
+import { useWindowSize } from '@hooks/index';
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -17,6 +18,7 @@ const ProjectItem: FC<ProjectItemProps> = ({ item, orderNumber }) => {
 
     const projectContainerRef = useRef<HTMLDivElement>(null)
 
+    const windowWidth = useWindowSize()
 
     useGSAP(() => {
         const projectImages = gsap.utils.toArray('.image-wrapper') as HTMLElement[]
@@ -59,7 +61,8 @@ const ProjectItem: FC<ProjectItemProps> = ({ item, orderNumber }) => {
         })
     }, {
         scope: projectContainerRef,
-        revertOnUpdate: true
+        revertOnUpdate: true,
+        dependencies: [windowWidth]
     })
 
     return (
