@@ -9,13 +9,16 @@ const HeaderNav: FC = ({ }) => {
     const navItems: NavItemProps[] = [
         {
             title: 'Home',
-            isActive: true
+            isActive: true,
+            link: '/'
         },
         {
-            title: 'About'
+            title: 'About',
+            link : '/about'
         },
         {
-            title: 'Works'
+            title: 'Works',
+            link: '/works'
         }
     ]
 

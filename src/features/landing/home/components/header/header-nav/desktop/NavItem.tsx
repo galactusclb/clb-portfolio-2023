@@ -1,20 +1,25 @@
 import { FC } from 'react'
+import { Link } from 'react-router-dom';
 
 export interface NavItemProps {
     title: string,
-    isActive?: boolean
+    isActive?: boolean;
+    link?: string
 }
 
-const NavItem: FC<NavItemProps> = ({ title, isActive }) => {
+const NavItem: FC<NavItemProps> = ({ title, isActive, link }) => {
     return (
-        <a className={`nav-link relative flex flex-col cursor-pointer gap-2 items-center ${isActive ? "text-inherit" : "text-gray-400"} hover:text-inherit`}>
+        <Link
+            className={`nav-link relative flex flex-col cursor-pointer gap-2 items-center ${isActive ? "text-inherit" : "text-gray-400"} hover:text-inherit`}
+            to={link || ''}
+        >
             {title}
             {
                 isActive ? (
                     <span className='flex w-[6px] bg-red-500 rounded-full aspect-square'></span>
                 ) : null
             }
-        </a>
+        </Link>
     )
 }
 

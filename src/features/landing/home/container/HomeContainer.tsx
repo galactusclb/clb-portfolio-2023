@@ -11,7 +11,7 @@ import PageLayout from '@components/shared/page-layout/PageLayout';
 const HomeContainer: FC = () => {
     return (
         // <div className='relative w-full min-h-screen bg-[#F7F828]'>
-        <PageLayout>
+        // <PageLayout>
             <div className='relative w-full min-h-screen bg-[#F7F8F8] text-[#3D4343] overflow-y-auto overflow-x-hidden'>
                 <Header />
                 <HeroSection />
@@ -21,7 +21,7 @@ const HomeContainer: FC = () => {
                 <ProjectSection />
                 <ContactSection />
             </div>
-        </PageLayout>
+        // </PageLayout>
     )
 }
 

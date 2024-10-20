@@ -3,6 +3,7 @@ import { persistReducer, persistStore } from "redux-persist";
 import storage from 'redux-persist/lib/storage';
 
 import appLoadingConfigSlice from "./appLoadingConfigSlice";
+import currentPageSlice from "./currentPageSlice";
 import authSlice from "./authSlice";
 
 
@@ -20,7 +21,8 @@ const persistedAuthReducer = createPersistedReducer('auth', authSlice);
 const store = configureStore({
     reducer: {
         auth: persistedAuthReducer,
-        appLoadingConfig: appLoadingConfigSlice
+        appLoadingConfig: appLoadingConfigSlice,
+        currentPage: currentPageSlice
         //   cart: persistedCartReducer,
         //   todos: todosReducer,
         //   control: controlReducer,
