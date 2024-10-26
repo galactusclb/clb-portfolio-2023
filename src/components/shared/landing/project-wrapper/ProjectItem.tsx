@@ -1,11 +1,11 @@
 import { useGSAP } from '@gsap/react';
+import { useWindowSize } from '@hooks/index';
 import gsap from 'gsap';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { FC, useRef } from 'react';
-import RevealHeading from '../common/RevealHeading';
-import RevealText from '../common/RevealText';
 import { Project } from './Project.type';
-import { useWindowSize } from '@hooks/index';
+import RevealHeading from '@components/shared/RevealHeading';
+import RevealText from '@components/shared/RevealText';
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -25,7 +25,7 @@ const ProjectItem: FC<ProjectItemProps> = ({ item, orderNumber }) => {
 
         projectImages.forEach((item) => {
 
-            const image = item.querySelector('img'); 
+            const image = item.querySelector('img');
 
             const tl = gsap.timeline({
                 scrollTrigger: {
@@ -77,7 +77,7 @@ const ProjectItem: FC<ProjectItemProps> = ({ item, orderNumber }) => {
                     <h5>{orderNumber}</h5>
                 </RevealHeading>
             </div>
- 
+
             <div className="flex flex-col justify-between gap-16 mt-8 xl:flex-row">
                 <RevealHeading>
                     <h4 className='text-3xl'>{item?.title}</h4>
@@ -94,7 +94,7 @@ const ProjectItem: FC<ProjectItemProps> = ({ item, orderNumber }) => {
                     <div className="flex flex-col items-end gap-6 mt-16">
                         {
                             item?.imageList?.map((img, key) => (
-                                <div key={key} className="overflow-hidden image-wrapper lg:w-3/4 rounded-xl">
+                                <div key={key} className="overflow-hidden h-[500px] image-wrapper lg:w-3/4 rounded-xl">
                                     <img src={img} alt="" className='object-cover object-top' />
                                 </div>
                             ))

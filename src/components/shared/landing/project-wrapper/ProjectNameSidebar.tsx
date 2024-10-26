@@ -2,9 +2,9 @@ import gsap from 'gsap';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { FC, useEffect, useRef } from 'react';
-import RevealHeading from '../common/RevealHeading';
 import { Project } from './Project.type';
 import { useGSAP } from '@gsap/react';
+import RevealHeading from '@components/shared/RevealHeading';
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
 

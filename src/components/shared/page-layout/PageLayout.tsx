@@ -21,7 +21,7 @@ const PageLayout: FC<PageLayoutProps> = ({ children }) => {
 			"https://images.unsplash.com/photo-1684252408280-737200626f2c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1888&q=80",
 			"https://images.unsplash.com/photo-1682686578842-00ba49b0a71a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1975&q=80",
 		],
-		// delay: 5000
+		delay: 1500
 	});
 	// const [isLoading, setIsLoading] = useState(true);
 

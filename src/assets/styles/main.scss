@@ -4,6 +4,10 @@
 
 @use "./basic/typography.module.scss";
 
+html {
+	// background: #3D4343;
+}
+
 [data-hidden] {
 	opacity: 0;
 }

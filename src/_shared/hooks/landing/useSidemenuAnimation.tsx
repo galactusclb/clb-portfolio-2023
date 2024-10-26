@@ -1,45 +1,23 @@
+import { Project } from "@components/shared/landing/project-wrapper/Project.type";
 import { useGSAP } from "@gsap/react";
 import { useWindowSize } from "@hooks/index";
-import img from '@images/home/koeta-home.webp';
 import gsap from 'gsap';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { RefObject, useState } from "react";
 import defaultTheme from 'tailwindcss/defaultTheme';
-import { Project } from "../components/projects/Project.type";
 
 gsap.registerPlugin(ScrollTrigger)
 
-const data: Project[] = [
-    {
-        title: 'Tasty Mock',
-        isActive: true,
-        targetId: 'project_tasty-mock',
-        type: 'Web Development',
-        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate doloribus quos consectetur voluptatibus possimus consequuntur dolor recusandae! Labore veritatis nostrum, laudantium vero qui fugit? Cum nisi quidem minima. Iste, eligendi.',
-        imageList: [img]
-    }, {
-        title: 'Koeta',
-        targetId: 'project_koeta',
-        type: 'UI/UX Design',
-        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate doloribus quos consectetur voluptatibus possimus consequuntur dolor recusandae! Labore veritatis nostrum, laudantium vero qui fugit? Cum nisi quidem minima. Iste, eligendi.',
-        imageList: [img, img]
-    }, {
-        title: 'New Project',
-        targetId: 'project_new-project',
-        type: 'Web Development',
-        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate doloribus quos consectetur voluptatibus possimus consequuntur dolor recusandae! Labore veritatis nostrum, laudantium vero qui fugit? Cum nisi quidem minima. Iste, eligendi.'
-    }
-]
-
 interface UseSidemenuAnimationProps {
     containerRef: RefObject<HTMLElement>;
+    items: Project[]
 }
 
 const useSidemenuAnimation = ({
-    containerRef
+    containerRef,
+    items
 }: UseSidemenuAnimationProps) => {
-
-    const [projectList, setProjectList] = useState<Project[]>(data)
+    const [projectList, setProjectList] = useState<Project[]>(items)
 
     const toggleActive = (itemIndex: number, status: boolean, isBack?: boolean) => {
         //to stay active the last item when scroll down
@@ -60,7 +38,7 @@ const useSidemenuAnimation = ({
 
         mm.add(`(min-width: ${defaultTheme.screens.xl})`, () => {
 
-            const projectLinks: HTMLElement[] = gsap.utils.toArray('.project-title')
+            // const projectLinks: HTMLElement[] = gsap.utils.toArray('.project-title')
             const projectItems = gsap.utils.toArray('.project-item') as HTMLElement[]
 
             const sidebar = document.querySelector('.project-sidebar');
@@ -72,9 +50,9 @@ const useSidemenuAnimation = ({
                 start: "top 120px",
                 end: "bottom 30%",
                 // end: () => `+=${containerRef.current?.offsetHeight}`,
-                pin: '.project-sidebar',
-                invalidateOnRefresh: true
-
+                pin: sidebar,
+                invalidateOnRefresh: true,
+markers: true
                 // animation: animation
             })
             // }
@@ -106,13 +84,9 @@ const useSidemenuAnimation = ({
         };
     }, {
         scope: containerRef,
-        dependencies: [windowWidth],
+        dependencies: [windowWidth, projectList?.length],
         revertOnUpdate: true
     })
-
-    // useEffect(()=>{
-    //     ScrollTrigger.refresh()
-    // }, [projectList])
 
     return {
         projectList

@@ -1,6 +1,6 @@
 import RevealHeading from '@features/landing/pluto-page/components/common/RevealHeading';
 import { FC } from 'react'
-import RevealText from '../common/RevealText';
+import RevealText from '../../../../../components/shared/RevealText';
 
 interface SectionTitleProps {
 

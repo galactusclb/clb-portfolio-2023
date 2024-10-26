@@ -1,7 +1,7 @@
 import { FC, useRef } from 'react'
 import ContactForm from './ContactForm';
 import { motion, useScroll, useTransform } from "framer-motion"
-import RevealHeading from '../common/RevealHeading';
+import RevealHeading from '../../../../../components/shared/RevealHeading';
 
 const ContactSection: FC = () => {
 
@@ -31,6 +31,10 @@ const ContactSection: FC = () => {
 
             <div className="flex w-full lg:w-[600px] justify-end">
                 <ContactForm />
+            </div>
+
+            <div className="w-full mt-12">
+                Hand-crafted with Creative mind by @CLB 
             </div>
         </motion.section>
     )

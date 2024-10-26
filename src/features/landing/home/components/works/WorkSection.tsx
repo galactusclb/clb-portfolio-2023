@@ -3,8 +3,8 @@ import { useWindowSize } from '@hooks/index';
 import gsap from 'gsap';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { FC, useRef, useState } from 'react';
-import RevealHeading from '../common/RevealHeading';
-import RevealText from '../common/RevealText';
+import RevealHeading from '../../../../../components/shared/RevealHeading';
+import RevealText from '../../../../../components/shared/RevealText';
 import WorkItem from './WorkItem';
 import { WorkItemType } from './WorkItem.type';
 

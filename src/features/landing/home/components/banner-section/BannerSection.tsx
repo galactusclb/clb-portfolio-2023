@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import RevealHeading from '../common/RevealHeading';
+import RevealHeading from '../../../../../components/shared/RevealHeading';
 
 const BannerSection: FC = () => {
     return (

@@ -9,7 +9,6 @@ const HeaderNav: FC = ({ }) => {
     const navItems: NavItemProps[] = [
         {
             title: 'Home',
-            isActive: true,
             link: '/'
         },
         {

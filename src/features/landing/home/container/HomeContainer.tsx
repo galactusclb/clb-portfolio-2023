@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import Header from '../components/header/Header';
+import Header from '../../../../components/shared/landing/header/Header';
 import HeroSection from '../components/hero/HeroSection';
 import AboutSection from '../components/about/AboutSection';
 import BannerSection from '../components/banner-section/BannerSection';

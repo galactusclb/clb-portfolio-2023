@@ -9,5 +9,12 @@ export default defineConfig({
   resolve: {
     //? this should use, if path alias in the tsconfig.json like this, '@/*' : ['./src']
     // alias: [{find: '@', replacement: path.resolve(__dirname, 'src')}]
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        api: 'modern-compiler'
+      }
+    }
   }
 })

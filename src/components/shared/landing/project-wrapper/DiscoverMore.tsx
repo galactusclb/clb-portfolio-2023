@@ -1,6 +1,6 @@
 import { FC } from 'react'
-import RevealHeading from '../common/RevealHeading';
-import LinkWrapper from '../common/LinkWrapper';
+import RevealHeading from '../../RevealHeading';
+import LinkWrapper from '../../../../features/landing/home/components/common/LinkWrapper';
 
 const DiscoverMore: FC = () => {
 

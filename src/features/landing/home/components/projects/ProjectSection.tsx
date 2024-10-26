@@ -1,11 +1,34 @@
+import DiscoverMore from '@components/shared/landing/project-wrapper/DiscoverMore';
+import ProjectWrapper from '@components/shared/landing/project-wrapper/ProjectWrapper';
+import RevealHeading from '@components/shared/RevealHeading';
+import RevealText from '@components/shared/RevealText';
+import useSidemenuAnimation from '@hooks/landing/useSidemenuAnimation';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { FC, useRef } from 'react';
-import RevealHeading from '../common/RevealHeading';
-import RevealText from '../common/RevealText';
-import DiscoverMore from './DiscoverMore';
-import ProjectItem from './ProjectItem';
-import ProjectNameSidebar from './ProjectNameSidebar';
-import useSidemenuAnimation from '../../hooks/useSidemenuAnimation';
+import img from '@images/home/koeta-home.webp';
+import { Project } from '@components/shared/landing/project-wrapper/Project.type';
+
+const data: Project[] = [
+    {
+        title: 'Tasty Mock',
+        isActive: true,
+        targetId: 'project_tasty-mock',
+        type: 'Web Development',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate doloribus quos consectetur voluptatibus possimus consequuntur dolor recusandae! Labore veritatis nostrum, laudantium vero qui fugit? Cum nisi quidem minima. Iste, eligendi.',
+        imageList: [img]
+    }, {
+        title: 'Koeta',
+        targetId: 'project_koeta',
+        type: 'UI/UX Design',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate doloribus quos consectetur voluptatibus possimus consequuntur dolor recusandae! Labore veritatis nostrum, laudantium vero qui fugit? Cum nisi quidem minima. Iste, eligendi.',
+        imageList: [img, img]
+    }, {
+        title: 'New Project',
+        targetId: 'project_new-project',
+        type: 'Web Development',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate doloribus quos consectetur voluptatibus possimus consequuntur dolor recusandae! Labore veritatis nostrum, laudantium vero qui fugit? Cum nisi quidem minima. Iste, eligendi.'
+    }
+]
 
 const ProjectSection: FC = () => {
 
@@ -18,7 +41,7 @@ const ProjectSection: FC = () => {
 
     const height = useTransform(scrollYProgress, [0, 0.95], [50, 0])
 
-    const { projectList } = useSidemenuAnimation({ containerRef })
+    const { projectList } = useSidemenuAnimation({ containerRef, items: data })
 
     return (
         <section ref={containerRef} className='relative px-3 bg-[#F7F8F8] z-[2]'>
@@ -33,25 +56,7 @@ const ProjectSection: FC = () => {
                         <p className='pt-3 font-sans'>Check out some of my projects by area of expertise</p>
                     </RevealText>
                 </div>
-
-                <div className="grid gap-4 xl:grid-cols-[280px,_1fr]">
-                    <div className='flex-row justify-between hidden gap-4 xl:flex'>
-                        <ProjectNameSidebar
-                            list={projectList}
-                        />
-                        <span className='block h-full w-[2px] rounded-full bg-[linear-gradient(0deg,rgba(0,0,0,0)0%,rgba(231,229,228,1)10%,rgba(231,229,228,1)90%,rgba(0,0,0,0)100%)]'></span>
-                    </div>
-                    <div className="flex flex-col">
-                        {
-                            projectList?.map((item, key) => (
-                                <ProjectItem
-                                    key={key}
-                                    orderNumber={`0${key + 1}/0${projectList?.length}`}
-                                    item={item} />
-                            ))
-                        }
-                    </div>
-                </div>
+                <ProjectWrapper items={projectList} />
                 <DiscoverMore />
             </div>
             <motion.div className="relative w-full bg-orange-200 circle-container" style={{ height }}>

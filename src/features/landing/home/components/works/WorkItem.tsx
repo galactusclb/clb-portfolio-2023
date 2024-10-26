@@ -1,8 +1,8 @@
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { FC, useRef } from 'react'
-import RevealHeading from '../common/RevealHeading';
-import RevealText from '../common/RevealText';
+import RevealHeading from '../../../../../components/shared/RevealHeading';
+import RevealText from '../../../../../components/shared/RevealText';
 import { WorkItemType } from './WorkItem.type';
 
 interface WorkItemProps {

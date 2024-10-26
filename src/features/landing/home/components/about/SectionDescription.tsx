@@ -1,6 +1,6 @@
 import { FC, useRef } from 'react'
 import img from "@images/home/clb-pose-min.png";
-import RevealText from '../common/RevealText';
+import RevealText from '../../../../../components/shared/RevealText';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
